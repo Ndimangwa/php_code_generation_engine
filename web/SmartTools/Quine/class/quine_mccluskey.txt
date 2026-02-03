@@ -1,0 +1,114 @@
+Quine-McCluskey
+Algorithm for Simplifying Boolean Expression with do not care 
+General Input 
+ 1. Number of variables, ABCDEF....
+ 2. Table, with Binary String, number of Ones, minterm/do not care
+ 
+DataStructure for Prime Implicant //After Interation pick the one which are not checked
+Array primeImplicant[i] = "0100-100";
+/*
+DS 
+	ArrayRow[i]
+		1. ArrayRow[i][0] = [[num, true], [num, false]......,[number, isminterm]] 
+		2. ArrayRow[i][1] = String of the Binary Number "01-00-100"
+		3. ArrayRow[i][2] = Number of 1s in group 
+		5. ArrayRow[i][3] = Is Prime Implicant [true/false] , default true, by default every term is a prime Implicant 
+*/
+Expected Classes 
+	1. Boolean //Static services for Boolean convertToBitsString etc
+	2. ImplicantCollection
+	3. PrimeImplicant extends ImplicantCollection to hold prime Implicant after each interation { collection of RowImplicant }
+	4. BooleanSimplifier extends ImplicantCollection  {collection of RowImplicant}
+	5. RowImplicant as defined in the ArrayRow[i] dataStructure 
+
+//Input 
+	1. Number of Variables 
+	2. Number list with status minterm or do-not-care
+
+Step 1: Create a PrimeImplicant Object
+		Create a BooleanSimplifier Object
+		BooleanSimplifier->setInitializeSimplifier(true)
+		
+		foreach numberSubmitted do 
+			-- Create a RowImplicant Object RowImplicantObj
+			-- RowImplicantObj->addNumberInList(submittedNumber, isminterm)
+			-- RowImplicantObj->addBinaryNumberString(Boolean::convertToBitsString(submittedNumber, stringLength))
+					|-->Automatically calculate number of BitsString
+			-- RowImplicantObj->setPrimeImplicant(true)
+			-- BooleanSimplifier->add(RowImplicantObj)
+		end-foreach
+		BooleanSimplifier->updateHighestGroupNumber()
+		return BooleanSimplifier
+		
+Step 2: Use the Boolean Simplifier Object 
+	//Exit point should be at bottom not at the beginning
+		
+		create a BooleanSimplifier ,, initializeSimplifier default false
+		
+		highestGroupNumber = prevBooleanSimplifier->getHighestGroupNumber()
+		for (i=; i <= highestGroupNumber; i++)	do 
+			rowListi = getListWithNoOfOnes(i)
+			rowListi1 = getListWithNoOfOnes(i+1)
+			
+			tempBS = BooleanSimplifier new
+			*********************************************
+			foreach (rowListi as li)	{
+				foreach (rowListi1 as li1)	{
+					if (is_simplified(li, li1))	{
+						$lnew = simplified(li, li1); 
+						$lnew->addInNumberList(from li and li1) 
+						$li->setPrimeImplicant(false)
+						$li1->setPrimeImplicant(false)
+						$tempBS->add($lnew)
+					}
+				}
+			}
+			**********************************************
+			//
+			foreach (row in tempBS do)
+				//
+				add In the BooleanSimplifier 
+			emd-for-each
+		end-for-i
+		listPrime = prevBooleanSimplifier->getAllPrimeImplicants 
+		foreach (row in listPrime) {
+			PrimeImplicant->add(row)
+		}
+		BooleanSimplifier->updateHighestGroupNumber()
+		if (prevBooleanSimplifier->allArePrime() and the NewBooleanSimplifier->isEmpty()) return prevBooleanSimplifier; //Means the 
+		return primeImplicant 
+		else do recorsive this is recursively solved
+		return PrimeImplicant 
+	
+Step 3: EssentialPrimeImplicant 
+		row[] = primeImplicant1->getRowPrimeImplicant, 	 0--m-1, index = i
+		col[] = minTerms , 0-- n -1, index = j
+		
+		row_sum[] sum of all row
+		col_sum[] sum of all col
+		
+		epi[][] = [0--m-1][0--n-1] 
+		
+		col[] = primeImplicant1->getAllMinterms();
+		row[] = primeImplicant1->getRowPrimeImplicant()
+		
+		foreach (row[i] as row)	{
+			foreach (col[j] as col)	{
+				//mark 
+				epi[i][j] = false
+				if (col is in primeImplicant1->getList())	{
+					epi[i][j] = true;
+				}
+			}
+		}
+		lowestColumnList = getColumnsWithTheLowestSum, get their indices 
+		getAnEPIRow, from lowestColumnList which covers highest number of cols 
+		Save this matched Row in a EssentialPrimeImplicant
+			//keep track of the matched colums and this row 
+		Build A new row[], new col[] and new epi[][] for nextIteration
+		In recursive function, terminating condition 
+			sizeof(col[]) is zero 
+			if (sizeof(row[])) is zero return failuer
+		
+		
+ 

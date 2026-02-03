@@ -1,0 +1,16 @@
+
+#header	{ float: left; width: 100%; margin-top: 48px; background: #eeeeee;}
+#header *.logo-container { float: left; width: 12%; height: 96px; position: relative; margin-top: -24px;}
+#header *.logo-container img	{ width: 100%; height: 100%;}
+#header *.abbrv-container {float: left; font-size: 1.4em; width: 16%; overflow: hidden;}
+#header *.abbrv-container *.a	{color: blue;}
+#header *.abbrv-container *.m	{color: red; }
+#header *.abbrv-container *.i	{color: green;}
+#header *.abbrv-container *.s	{color: blue;}
+#header *.long-form-container {position: relative; top: 2em; color: blue; font-size: 0.6em; margin-top: 20px; float: left;  width: 36%; }
+#header *.new-to-system	{ float: left; width: 36%; margin-top: 32px;}
+#header *.new-to-system *.label1	{ float: left; width: 40%; font-size: 0.8em; }
+#header *.new-to-system *.button1	{ float: left; width: 60%; }
+#header *.new-to-system	span { font-size: 1em; margin-left: 20px; }
+#header *.new-to-system h3	{ background: white url("../../img/bottom.jpg") repeat-x left bottom; margin: 0; padding: 0; margin-left: 10px; border: 1px solid gold; border-top: none; font-size: 1em; text-align: center; margin-right: 12px; }
+#header *.new-to-system h3 a	{ background: white url("../../img/top.jpg") repeat-x left top; border-top: 1px solid gold; text-decoration: none; cursor: pointer; display: block;  }

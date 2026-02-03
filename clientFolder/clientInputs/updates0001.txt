@@ -1,0 +1,16 @@
+Patient Registratio
+
+1. Registration.Balozi = Not_Mandatory
+2. Phone = Not_Mandatory
+3. Medical Doctor  Min Registration <All should Appear, upon confirmation>
+4. Edit Basic Patient Data
+5. Discount Enni
+6. Triage # Not Mandatory 
+7. Triage.Mandatory { #### Confirm with Management 
+   # 1.  blood Pressure (Systollic and Dystollic) X 
+    2. temperature
+   # 3. Pulse rate X
+   # 4. Respiration rate
+}
+8. Transfer-In Case ( # Vipimo tu )
+9. Format ya namba ya file kubwa 01-17-98 (last Number) , width 6 separated by comma

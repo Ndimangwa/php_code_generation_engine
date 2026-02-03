@@ -1,0 +1,142 @@
+<?php
+$erollback = false;
+$conn = null;
+$consultationQueue1 = null;
+$host = $config1->getHostname();
+$dbname = $config1->getDatabase();
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $config1->getUsername(), $config1->getPassword());
+    $consultationQueue1 = new MedicalDoctorConsultationQueue("Delta", $_REQUEST['qid'], $conn);
+    if ($consultationQueue1->getPatientCase()->isClosed()) {
+        throw new Exception("This case for this patient is already closed");
+    }
+    //Now pulling previous saved-values
+    $patientHistory1 = PatientHistory::getWorkingBlockForConsultationQueue($conn, $consultationQueue1->getQueueId());
+    $generalExamination1 = GeneralExamination::getWorkingBlockForConsultationQueue($conn, $consultationQueue1->getQueueId());
+    $vitalSigns1 = VitalSigns::getWorkingBlockForConsultationQueue($conn, $consultationQueue1->getQueueId());
+    $localExamination1 = LocalExamination::getWorkingBlockForConsultationQueue($conn, $consultationQueue1->getQueueId());
+    $systemicExamination1 = SystemicExamination::getWorkingBlockForConsultationQueue($conn, $consultationQueue1->getQueueId());
+    $provisionDiagnosis1 = ProvisionDiagnosis::getWorkingBlockForConsultationQueue($conn, $consultationQueue1->getQueueId());
+    $examinationQueue1 = PatientExaminationQueue::getWorkingBlockForConsultationQueue($conn, $consultationQueue1->getQueueId());
+    $workingDiagnosis1 = WorkingDiagnosis::getWorkingBlockForConsultationQueue($conn, $consultationQueue1->getQueueId());
+    if (isset($_POST['submit']) && isset($_POST['efilter'])) {
+        $conn->beginTransaction();
+        $erollback = true;
+        //Handling Submission --begin
+        var_dump($_POST);
+        //Handling Submission --end
+        $conn->commit();
+        $erollback = false;
+    } else {
+        $vitalSigns1 = is_null($vitalSigns1) ? (Triage::getTriageForConsultationQueue($conn, $consultationQueue1)) : $vitalSigns1;
+        $listOfDifferentialDiseases = array();
+        if (!is_null($provisionDiagnosis1)) {
+            if (!is_null($provisionDiagnosis1->getMainDisease())) $listOfDifferentialDiseases[0] = $provisionDiagnosis1->getMainDisease();
+            if (!is_null($provisionDiagnosis1->getListOfDifferentialDiseases())) $listOfDifferentialDiseases = array_merge($listOfDifferentialDiseases, $provisionDiagnosis1->getListOfDifferentialDiseases());
+        }
+        //My UI -Page
+        $consultationQueue1->setExtraFilter(__object__::getMD5CodedString("Delta", 32))->update(!$erollback);
+        $controlDisabled = false;
+        echo UIView::wrap(__data__::createDataCaptureForm($thispage, "MedicalDoctorConsultationQueue", array(
+            array("styles" => array("font-size" => "1.3em"), "disabled" => $controlDisabled, "use-class" => "PatientHistory", "group" => array("name" => "patient-history"), "pname" => "comments", "caption" => "Patient History", "value" => "link one", "type" => "label"),
+            array("disabled" => $controlDisabled, "use-class" => "PatientHistory", "group" => array("name" => "patient-history", "classes" => array("border", "border-primary")), "pname" => "chiefComplaints", "value" => (is_null($patientHistory1) ? "" : (is_null($patientHistory1->getChiefComplaints()) ? "" : ($patientHistory1->getChiefComplaints()->getComments()))), "caption" => "Chief Complaints (C/C)", "type" => "text", "required" => true, "placeholder" => "Header-ache"),
+            array("disabled" => $controlDisabled, "use-class" => "PatientHistory", "group" => array("name" => "patient-history", "classes" => array("border", "border-primary")), "pname" => "reviewOfOtherServices", "value" => (is_null($patientHistory1) ? "" : (is_null($patientHistory1->getReviewOfOtherServices()) ? "" : ($patientHistory1->getReviewOfOtherServices()->getComments()))), "caption" => "Review of Other Services (RoS)", "type" => "text", "required" => false, "placeholder" => "Fever"),
+            array("disabled" => $controlDisabled, "use-class" => "PatientHistory", "group" => array("name" => "patient-history", "classes" => array("border", "border-primary")), "pname" => "pastMedicalHistory", "value" => (is_null($patientHistory1) ? "" : (is_null($patientHistory1->getPastMedicalHistory()) ? "" : ($patientHistory1->getPastMedicalHistory()->getComments()))), "caption" => "Past Medical History (PMHs)", "type" => "text", "required" => false, "placeholder" => "Fever"),
+            array("disabled" => $controlDisabled, "use-class" => "PatientHistory", "group" => array("name" => "patient-history", "classes" => array("border", "border-primary")), "pname" => "familyAndSocialHistory", "value" => (is_null($patientHistory1) ? "" : (is_null($patientHistory1->getFamilyAndSocialHistory()) ? "" : ($patientHistory1->getFamilyAndSocialHistory()->getComments()))), "caption" => "Family And Social History (FSMx)", "type" => "text", "required" => false, "placeholder" => "Fever"),
+
+            array("disabled" => $controlDisabled, "use-class" => "GeneralExamination", "group" => array("name" => "general-examination", "classes" => array("border", "border-danger")), "pname" => "examination", "value" => (is_null($generalExamination1) ? "" : (is_null($generalExamination1->getExamination()) ? "" : ($generalExamination1->getExamination()->getComments()))), "caption" => "General Examination", "type" => "textarea", "required" => true, "placeholder" => "Spots"),
+
+            array("styles" => array("font-size" => "1.3em"), "disabled" => $controlDisabled, "use-class" => "VitalSigns", "group" => array("name" => "vital-signs"), "pname" => "comments", "caption" => "Vital Signs", "value" => "link one", "type" => "label"),
+            array("disabled" => $controlDisabled, "use-class" => "VitalSigns", "group" => array("name" => "vital-signs", "classes" => array("border", "border-primary")), "pname" => "weight", "value" => ((!(is_null($vitalSigns1) || ($vitalSigns1->getWeight() == Triage::$__DEFAULT_NUMBER_VALUE))) ? ($vitalSigns1->getWeight()) : ""), "caption" => "Weight (Kg)", "required" => false, "placeholder" => "78"),
+            array("disabled" => $controlDisabled, "use-class" => "VitalSigns", "group" => array("name" => "vital-signs", "classes" => array("border", "border-primary")), "pname" => "height", "value" => ((!(is_null($vitalSigns1) || ($vitalSigns1->getHeight() == Triage::$__DEFAULT_NUMBER_VALUE))) ? ($vitalSigns1->getHeight()) : ""), "caption" => "Height (cm)", "required" => false, "placeholder" => "176"),
+            array("disabled" => $controlDisabled, "use-class" => "VitalSigns", "group" => array("name" => "vital-signs", "classes" => array("border", "border-primary")), "pname" => "temperature", "value" => ((!(is_null($vitalSigns1) || ($vitalSigns1->getTemperature() == Triage::$__DEFAULT_NUMBER_VALUE))) ? ($vitalSigns1->getTemperature()) : ""), "caption" => "Temperature (deg C)", "required" => false, "placeholder" => "36.9"),
+            array("disabled" => $controlDisabled, "use-class" => "VitalSigns", "group" => array("name" => "vital-signs", "classes" => array("border", "border-primary")), "pname" => "bloodPressure", "value" => ((!(is_null($vitalSigns1) || ($vitalSigns1->getBloodPressure() == Triage::$__DEFAULT_BP_VALUE))) ? ($vitalSigns1->getBloodPressure()) : ""), "caption" => "Blood Pressure (mmHg)", "required" => false, "placeholder" => "118/79"),
+            array("disabled" => $controlDisabled, "use-class" => "VitalSigns", "group" => array("name" => "vital-signs", "classes" => array("border", "border-primary")), "pname" => "pulseRate", "value" => ((!(is_null($vitalSigns1) || ($vitalSigns1->getPulseRate() == Triage::$__DEFAULT_NUMBER_VALUE))) ? ($vitalSigns1->getPulseRate()) : ""), "caption" => "Pulse Rate (bpm)", "required" => false, "placeholder" => "64"),
+            array("disabled" => $controlDisabled, "use-class" => "VitalSigns", "group" => array("name" => "vital-signs", "classes" => array("border", "border-primary")), "pname" => "respirationRate", "value" => ((!(is_null($vitalSigns1) || ($vitalSigns1->getRespirationRate() == Triage::$__DEFAULT_NUMBER_VALUE))) ? ($vitalSigns1->getRespirationRate()) : ""), "caption" => "Respiration Rate (bpm)", "required" => false, "placeholder" => "16"),
+            array("disabled" => $controlDisabled, "use-class" => "VitalSigns", "group" => array("name" => "vital-signs", "classes" => array("border", "border-primary")), "pname" => "oxygenLevel", "value" => ((!(is_null($vitalSigns1) || ($vitalSigns1->getOxygenLevel() == Triage::$__DEFAULT_NUMBER_VALUE))) ? ($vitalSigns1->getOxygenLevel()) : ""), "caption" => "Saturation Level (%)", "required" => false, "placeholder" => "99"),
+
+            array("disabled" => $controlDisabled, "use-class" => "LocalExamination", "group" => array("name" => "local-examination", "classes" => array("border", "border-danger")), "pname" => "examination", "value" => (is_null($localExamination1) ? "" : (is_null($localExamination1->getExamination()) ? "" : ($localExamination1->getExamination()->getComments()))), "caption" => "Local Examination", "type" => "textarea", "required" => false, "placeholder" => "Spots"),
+
+            array("disabled" => $controlDisabled, "use-class" => "SystemicExamination", "group" => array("name" => "systemic-examination", "classes" => array("border", "border-primary")), "pname" => "examination", "value" => (is_null($systemicExamination1) ? "" : (is_null($systemicExamination1->getExamination()) ? "" : ($systemicExamination1->getExamination()->getComments()))), "caption" => "Systemic Examination", "type" => "textarea", "required" => false, "placeholder" => "Spots"),
+
+            array("disabled" => $controlDisabled, "use-class" => "ProvisionDiagnosis", "group" => array("name" => "provision-diagnosis", "classes" => array("border", "border-danger")), "pname" => "mainDisease", "caption" => "The first disease in the list will be considered as Main Disease, the rest will be consided as differential diagnosis", "value" => "link one", "type" => "label"),
+            array("id" => "idProvisionDiagnosis", "disabled" => $controlDisabled, "use-class" => "ProvisionDiagnosis", "group" => array("name" => "provision-diagnosis", "classes" => array("border", "border-danger")), "pname" => "listOfDifferentialDiseases", "value" => $listOfDifferentialDiseases, "caption" => "Provision Diagnosis", "required" => true,  "items-count" => array("minimum" => 1, "maximum" => 100), "include-columns" => array("icd10Code" => array("caption" => "ICD 10 Code"), "whoFullDescription" => array("caption" => "Description (WHO)"))),
+
+            ( ( ! is_null($examinationQueue1) && ($examinationQueue1->isPendingPayment()) ? ( array("disabled" => $controlDisabled, "group" => array("name" => "examination", "classes" => array("border", "border-primary", "bg-danger")), "use-class" => "PatientExaminationQueue", "pname" => "listOfServices", "type" => "label", "caption" => "You have pending payment for examination, you need to make payment") ) : ( array("disabled" => $controlDisabled, "use-class" => "PatientExaminationQueue", "group" => array("name" => "examination", "classes" => array("border", "border-primary")), "pname" => "listOfServices", "value" => (is_null($examinationQueue1) ? null : ($examinationQueue1->getListOfServices())), "caption" => "Services (Lab/X-Ray/Ultasound)", "required" => true, "include-columns" => array("serviceName" => array("caption" => "Service Name"), "currency" => array("caption" => "Currency", "map" => "Currency.code"), "amount" => array("caption" => "Amount")), "filter" => array("category" => array((ServiceCategory::$__LABORATORY_EXAMINATION), (ServiceCategory::$__PLAIN_CONVENTION_X_RAY), (ServiceCategory::$__ULTRA_SOUND)))) )) ),
+
+            array("id" => "idWorkingDiagnosis", "disabled" => $controlDisabled, "use-class" => "WorkingDiagnosis", "group" => array("name" => "working-diagnosis", "classes" => array("border", "border-danger")), "pname" => "listOfDiseases", "value" => (is_null($workingDiagnosis1) ? null : ( $workingDiagnosis1->getListOfDiseases() )),"required" => false, "caption" => "Working Diagnosis", "items-count" => array("maximum" => 100), "include-columns" => array("icd10Code" => array("caption" => "ICD 10 Code"), "whoFullDescription" => array("caption" => "Description (WHO)"))),
+            
+            array("id" => "idDrugSelection", "disabled" => $controlDisabled, "use-class" => "PatientDrugManagement", "group" => array("name" => "drugs-management", "classes" => array("border", "border-primary")), "pname" => "pharmaceuticalDrug", "caption" => "Drugs Selection", "type" => "list-object", "required" => false, "include-columns" => array("drugName" => array("caption" => "Name of Drug"), "unitOfMeasurement" => array("caption" => "Units"), "temporaryIntegerHolder" => array("caption" => "Quantity", "render-control" => array("required" => true, "value" => "1", "placeholder" => "1")), "usage" => array("caption" => "Usage", "render-control" => array("required" => true, "placeholder" => "1 * 3")))),
+
+            array('id' => 'idOperation', 'pname' => 'queueName', 'type' => 'switch-label', 'target-class' => 'operation-theatre', 'checked' => false, 'group' => array('name' => 'operation', 'classes' => array('border', 'border-danger', 'm-1', 'p-1')), 'caption' => 'Book for Operation', 'title' => 'Slide to Book or Un-book an opperation'),
+            array('pname' => 'listOfServices', 'classes' => array('operation-theatre'), 'group' => array('name' => 'operation'), 'use-class' => 'PatientAdmissionQueue', 'caption' => 'List of Operations', 'required' => true, 'disabled' => true, 'include-columns' => array('serviceName' => array('caption' => 'Service'), 'currency' => array('caption' => 'Currency', 'map' => 'Currency.code'), 'amount' => array('caption' => 'Amount')), 'filter' => array('category' => array((ServiceCategory::$__OPEN_SURGERY), (ServiceCategory::$__ENDOSCOPIC_SURGERY)))),
+            array('pname' => 'numberOfDays', 'classes' => array('operation-theatre'), 'group' => array('name' => 'operation'), 'use-class' => 'PatientAdmissionQueue', 'caption' => 'Number of Days', 'required' => true, 'disabled' => true, 'value' => '1', 'placeholder' => '1'),
+            array('pname' => 'theatre', 'classes' => array('operation-theatre'), 'group' => array('name' => 'operation'), 'use-class' => 'PatientOperationQueue',  'caption' => 'Theatre', 'required' => true, 'disabled' => true),
+            array('pname' => 'surgeon', 'classes' => array('operation-theatre'), 'group' => array('name' => 'operation'), 'use-class' => 'PatientOperationQueue', 'caption' => 'Surgeon', 'required' => false, 'disabled' => true, 'filter' => array('specialist' => array('1'))),
+            array('pname' => 'anaesthetist', 'classes' => array('operation-theatre'), 'group' => array('name' => 'operation'), 'use-class' => 'PatientOperationQueue', 'caption' => 'Anaesthetist', 'required' => false, 'disabled' => true, 'filter' => array('specialist' => array('1'))),
+            array('pname' => 'timeOfAppointment', 'placeholder' => '05/29/2009', 'classes' => array('operation-theatre'), 'type' => 'date', 'group' => array('name' => 'operation'), 'title' => 'An expected date for this opeation', 'use-class' => 'PatientOperationQueue', 'caption' => 'Operation Date', 'disabled' => true)
+        ), "Save", "create", $conn, 0, array(
+            "page" => $page,
+            "qid" => (is_null($consultationQueue1) ? $_REQUEST['qid'] : ($consultationQueue1->getQueueId())),
+            "submit" => 1,
+            "efilter" => ($consultationQueue1->getExtraFilter()),
+            "disabled" => ( $controlDisabled ? "1" : "0" )
+        ), null, null, "medical-doctor-consult", $thispage, true));
+    }
+    $conn = null;
+} catch (Exception $e) {
+    if (!is_null($conn) && $erollback) $conn->rollBack();
+    //We need to build link
+    $message = $e->getMessage();
+    $link1 = UIControls::getAnchorTag("Reload Page", $thispage, array(
+        "page" => $page,
+        "qid" => (is_null($consultationQueue1) ? $_REQUEST['qid'] : ($consultationQueue1->getQueueId()))
+    ), array("card-link"), array("text-align: center"));
+    $window1 = "<div><div>$message</div><div>$link1</div></div>";
+    echo UICardView::getDangerReportCard("Medical Consultation", $window1);
+}
+?>
+<script type="text/javascript">
+    (function($)    {
+        $(function()    {
+            const EVENT_NAME = Constant.default_event_name;
+            //Initializiation
+            var $provisionDiagnosis1 = $('#idProvisionDiagnosis');
+            var $workingDiagnosis1 = $('#idWorkingDiagnosis');
+            var $drugSelection1 = $('#idDrugSelection');
+            var $operation1 = $('#idOperation'); 
+            //.data-control to get actual data object
+            if ( ! $provisionDiagnosis1.length ) return false;
+            if ( ! $workingDiagnosis1.length ) return false;
+            if ( ! $drugSelection1.length ) return false;
+            if ( ! $operation1.length ) return false;
+            //Now proceed 
+            var $searchProvisionDiagnosis1 = $provisionDiagnosis1.find('.data-control');
+            var $searchWorkingDiagnosis1 = $workingDiagnosis1.find('.data-control');
+            var $searchDrugSelection1 = $drugSelection1.find('.data-control');
+            var $chkOperation1 = $operation1.find('.data-check-control');
+            //
+            if ( ! $searchProvisionDiagnosis1.length ) return false;
+            if ( ! $searchWorkingDiagnosis1.length ) return false;
+            if ( ! $searchDrugSelection1.length ) return false;
+            if ( ! $chkOperation1.length ) return false;
+            //
+            $searchWorkingDiagnosis1.prop('disabled', ( parseInt($provisionDiagnosis1.data('trace')) == 0 )) ;
+            $searchDrugSelection1.prop('disabled', ( parseInt($workingDiagnosis1.data('trace')) == 0 ));
+            $chkOperation1.prop('checked', ! ( parseInt($workingDiagnosis1.data('trace')) == 0 ));
+            //Now Handling Events
+            $provisionDiagnosis1.on(EVENT_NAME, function(e, param1) {
+                const { length } = param1;
+                $workingDiagnosis1.trigger(EVENT_NAME, [ param1 ]);
+                $searchWorkingDiagnosis1.prop('disabled', (parseInt(length) == 0));
+            });
+            $workingDiagnosis1.on(EVENT_NAME, function(e, param1)   {
+                const { length } = param1;
+                $drugSelection1.trigger(EVENT_NAME, [ param1 ]);
+                $operation1 .trigger(EVENT_NAME, [ { length : length, value : length } ]); //This is checkbox value instead of values
+                $searchDrugSelection1.prop('disabled', ( parseInt(length) == 0 ));
+                $chkOperation1.prop('checked', ! ( parseInt(length) == 0 ));
+            });
+        });
+    })(jQuery);
+</script>

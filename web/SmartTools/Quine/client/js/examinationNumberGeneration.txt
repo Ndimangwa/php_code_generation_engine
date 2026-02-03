@@ -1,0 +1,10 @@
+//EXAMINATION NUMBER GENERATING ALGORITHM
+//Data Source for ALGORITHM //Examination Numbers will be generated ONLY when students logs to the system
+// Load if any existing examinationNumbers for examX already in Examination Number
+// 1. Student Object, examinationEligible field  [Once per all Examination, Static Function, which will return list of valid Examinations]
+// 2. ExaminationEligible Object, For Reading in the list  [Static Function, which will return list of valid Examinations eligible (isOrWillBe..) for this Students]
+//	[To avoid duplication, merge the above list first]
+//	Data Destination, if match with the data source above, then write to ExaminationNumber Object [Write Only new Entry]
+
+
+$_SESSION['name'] = stripslashes(htmlspecialchars($_POST['name']));

@@ -1,0 +1,7 @@
+{
+    "require": {
+        "monolog/monolog": "^2.3",
+        "fpdf/fpdf": "^1.83",
+        "tecnickcom/tcpdf": "^6.4"
+    }
+}

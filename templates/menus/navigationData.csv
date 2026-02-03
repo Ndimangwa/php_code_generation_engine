@@ -1,0 +1,12 @@
+menuId,menuName,pageToGo,sequenceNumber,parentMenu,cName
+1,Staff/User Management,,0,NULL,menu_users
+2,Patient Management,,0,NULL,menu_patients
+3,Financial Management,,0,NULL,finance
+4,Patient Flow Management,,0,NULL,patient_flow
+5,Laboratory Management,,0,NULL,laboratory
+6,Admission Management,,0,NULL,admission
+7,Pharmacy Management,,0,NULL,pharmacy
+8,Ward & Admission Management,,0,NULL,admission
+9,User Accounts Management,page=login,0,1,login
+10,Job Title Management,page=jobtitle,0,1,jobtitle
+11,Group Management,page=group,0,1,group

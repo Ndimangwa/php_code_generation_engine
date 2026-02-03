@@ -1,0 +1,238 @@
+<?php
+class PatientAdmissionQueue
+{
+    public function getPDFTabularSummary($pdf1, $profile1, $login1, $logofilename = null, $showHeaderAndFooter = true, $showCreationAndUpdationTime = true, $addNewPage = true, $settings = null, $shapingFunction = null)
+    {
+        $settings = is_null($settings) ? array() : $settings;
+        //Get Queue
+        $patientAdmissionQueue1 = $this;
+        $conn = $this->conn;
+        //Working with Headers and Footers if any
+        if ($showHeaderAndFooter) {
+            $headerTitle = isset($settings['header-title']) ? $settings['header-title'] : "Default Title";
+            $footerTitle = isset($settings['footer-title']) ? $settings['footer-title'] : "Default Title";
+            PDFLayout::createPageHeader($pdf1, $headerTitle, $logofilename, $settings);
+            PDFLayout::createPageFooter($pdf1, $footerTitle, $settings);
+        }
+        //Add a New Page
+        if ($addNewPage) {
+            $pdf1->AddPage();
+        }
+        //Start building page
+        //Invoices list 
+        $listOfInvoices = PatientInvoice::filterRecords($conn, array(
+            "temporaryObjectHolder" => ($patientAdmissionQueue1->getObjectReferenceString())
+        ));
+        if (!is_null($listOfInvoices)) {
+            $widthArray1 = array(1, 2, 4, 4, 4);
+            $headerArray1 = array('Currency', 'Invoice Number', 'Invoiced Amount', 'Total Paid');
+            $generalFormat = array("align:0" => "R", "align:1" => "L", "align:2" => "L", "align:3" => "L");
+            $dataArray1 = array();
+            foreach ($listOfInvoices as $invoice1) {
+                $code = $invoice1->getCurrency()->getCode();
+                $amount = number_format($invoice1->getAmount(), 2);
+                $invoiceNumber = $invoice1->getInvoiceNumber();
+                $paid = number_format($invoice1->getTotalPaid(), 2);
+                $dataArray1[sizeof($dataArray1)] = array($code, $invoiceNumber, $amount, $paid);
+            }
+            //Adding Invoice 
+            PDFTable::getTable($pdf1, $dataArray1, $headerArray1, $widthArray1, $generalFormat, 180);
+        }
+        
+        $timeOfRequest = $patientAdmissionQueue1->getTimeOfCreation()->getDateAndTimeString();
+        $listOfServices = $patientAdmissionQueue1->getListOfServices();
+        $comment = "Not Yet Admitted";
+        $admissionRow = "";
+        $serviceListRow = "";
+        $serviceListComment = "";
+        $listOfPatientAdmissions = PatientAdmission::filterRecords($conn, array(
+            "admissionQueue" => ($patientAdmissionQueue1->getQueueId())
+        ));
+        if (!is_null($listOfPatientAdmissions)) {
+            if (sizeof($listOfPatientAdmissions) > 1) {
+                $serviceListComment = "<div style=\"font-style: italic; font-size: 0.9em; text-align: center; color: white; background-color: red; padding: 1px; margin: 1px;\">Multiple Admission found in the same queue</div>";
+            } else {
+                $patientAdmission1 = $listOfPatientAdmissions[0];
+                $timeOfAdmission = $patientAdmission1->getTimeOfCreation()->getDateAndTimeString();
+                $admissionRow = "<span>Admitted On : $timeOfAdmission</span><br/>";
+                $comment = "Admitted";
+                //Service List Comment , ward information
+                $bed1 = $patientAdmission1->getBed();
+                $room1 = $bed1->getRoom();
+                $ward1 = $room1->getWard();
+                $bedInfo = "Bed no : " . ($bed1->getBedNumber());
+                $roomInfo = "Room no : " . ($room1->getRoomNumber()) . (($room1->isPrivate()) ? ", <i>Private Room</i>" : "") . (($room1->isObservation()) ? ", <i>Observation Room</i>" : "");
+                $wardInfo = "Ward no : " . ($ward1->getWardNumber());
+                $serviceListComment = "<span><h5>Extra Admission Information</h5><span>$bedInfo</span>;&nbsp;&nbsp;&nbsp;&nbsp;<span>$roomInfo</span>;&nbsp;&nbsp;&nbsp;&nbsp;<span>$wardInfo</span></span><br/>";
+            }
+        }
+        //serviceListRow
+        if (!is_null($listOfServices)) {
+            $serviceListRow = "<div><h4>Services to be performed</h4>";
+            $headerArray1 = array('Name of Service', 'Status');
+            $widthArray1 = array(1, 5, 3);
+            $dataArray1 = array();
+            foreach ($listOfServices as $service1) {
+                $dataArray1[sizeof($dataArray1)] = array(
+                    ($service1->getServiceName()),
+                    ($comment)
+                );
+            }
+            $serviceListRow .= UITabularView::buildHTMLTable($headerArray1, $dataArray1, $widthArray1, 'admission-sub-ui', array(
+                '.thead-tr-0 > th' => array('background-color' => 'black', 'color' => 'white', 'font-size' => '1.0em', 'font-weight' => 'bold', 'text-align' => 'center'),
+                'th, td' => array('border' => '1px solid black', 'padding' => '1px'),
+                '.cell-0' => array('text-align' => 'right')
+            ));
+            $serviceListRow .= $serviceListComment;
+            $serviceListRow .= "</div>";
+        }
+        $admissionWindow1 = "<div style=\"border: 1px dotted black; padding: 1px; margin: 1px;\"><h4>Admission Summary</h4>";
+        $admissionWindow1 .= "<span>Requested On : $timeOfRequest</span><br/>";
+        $admissionWindow1 .= $admissionRow;
+        $admissionWindow1 .= $serviceListRow;
+        $admissionWindow1 .= "</div>";
+        $window1 .= $admissionWindow1;
+        $window1 .= "</div>";
+        //End Admission
+        //Working with PatientOperation
+        $listOfPatientOperationQueues = PatientOperationQueue::filterRecords($conn, array(
+            "admissionQueue" => ($patientAdmissionQueue1->getQueueId())
+        ));
+        if (!is_null($listOfPatientOperationQueues)) {
+            if (sizeof($listOfPatientOperationQueues) > 1) {
+                $window1 .= "<div style=\"margin: 1px; padding: 1px; border: 1px solid black; text-align: center; background-color: red; color: white;\">Multiple Operation Queues found for the same Admission Queue</div>";
+            } else {
+                $patientOperationQueue1 = $listOfPatientOperationQueues[0];
+                $window1 .= "<div><h4>Operation Summary</h4>";
+                $scheduledTime = $patientOperationQueue1->getTimeOfAppointment()->getDateAndTimeString();
+                $theatreName = $patientOperationQueue1->getTheatre()->getTheatreName();
+                $surgeonName = (!is_null($patientOperationQueue1->getSurgeon()) ? ($patientOperationQueue1->getSurgeon()->getLogin()->getFullName()) : ($patientOperationQueue1->getOtherSurgeon()));
+                $anaesthetistName = (!is_null($patientOperationQueue1->getAnaesthetist()) ? ($patientOperationQueue1->getAnaesthetist()->getLogin()->getFullName()) : ($patientOperationQueue1->getOtherAnaesthetist()));
+                $sponsorName = $patientOperationQueue1->getSponsorName();
+                //Preparing Summary 
+                $headerArray1 = array('Title', 'Value');
+                $widthArray1 = array(1, 4, 4);
+                $dataArray1 = array(
+                    array('Scheduled On', $scheduledTime),
+                    array('Theatre', $theatreName)
+                );
+                if (!is_null($surgeonName)) $dataArray1[sizeof($dataArray1)] = array('Surgeon', $surgeonName);
+                if (!is_null($anaesthetistName)) $dataArray1[sizeof($dataArray1)] = array('Anaesthetist', $anaesthetistName);
+                $dataArray1[sizeof($dataArray1)] = array('Sponsor', $sponsorName);
+                $window1 .= UITabularView::buildHTMLTable($headerArray1, $dataArray1, $widthArray1, 'operation-id', array(
+                    '.thead-tr-0 > th' => array('background-color' => 'black', 'color' => 'white', 'font-size' => '1.0em', 'font-weight' => 'bold', 'text-align' => 'center'),
+                    'th, td' => array('border' => '1px solid black', 'padding' => '1px'),
+                    '.cell-0' => array('text-align' => 'right')
+                ));
+                //Proceed for Admission
+                $listOfOperations = PatientOperation::filterRecords($conn, array(
+                    "operationQueue" => ( $patientOperationQueue1->getQueueId() )
+                ));
+                if (! is_null($listOfOperations))   {
+                    foreach ($listOfOperations as $patientOperation1)   {
+                        $window1 .= "<div style=\"margin: 1px; padding: 1px; border: 1px dotted yellow;\">";
+                        $serviceName = $patientOperation1->getService()->getServiceName();
+                        $window1 .= "<h4><b>Service : <i>$serviceName</i></b></h4>";
+                        $window1 .= UITabularView::buildHTMLTableForObject($patientOperation1, array(
+                            'timeOfCreation',
+                            'service',
+                            'surgeon',
+                            'otherSurgeon',
+                            'anaesthetist',
+                            'otherAnaesthetist',
+                            'typeOfAnaesthetist',
+                            'theatre',
+                            'surgeryTime',
+                            'surgeryDuration',
+                            'startCuttingTime',
+                            'endCuttingTime',
+                            'position',
+                            'incision',
+                            'status',
+                            'procedureDescriptionAndClosure',
+                            'identificationOfProsthesis',
+                            'estimatedBloodLoss',
+                            'problemsAndComplications',
+                            'drain',
+                            'technicalComments',
+                            'attendedBy',
+                            'completed'
+                        ), array('Caption', 'Value'), array(
+                            'otherAnaesthetist' => 'Anaesthetist',
+                            'otherSurgeon' => 'Surgeon'
+                        ), array(), array('1970:01:01:02:00:00', '1969:12:31:23:00:00'), array(1, 5, 6), array(
+                            '.thead-tr-0 > th' => array('background-color' => 'black', 'color' => 'white', 'font-size' => '1.0em', 'font-weight' => 'bold', 'text-align' => 'center'),
+                            'th, td' => array('border' => '1px dotted green', 'padding' => '1px'),
+                            '.cell-0' => array('text-align' => 'right')
+                        ));
+                        $window1 .= "</div>";
+                    }
+                }
+                $window1 .= "</div>";
+            }
+        }
+        //End Working with PatientOperation
+        $window1 .= "</div>";
+        //Writing to pdf object
+        $pdf1->writeHTML($window1, true, false, true, false, '');
+        return $pdf1;
+    }
+    public function _getPDFTabularSummary($pdf1, $profile1, $login1, $logofilename = null, $showHeaderAndFooter = true, $showCreationAndUpdationTime = true, $addNewPage = true, $settings = null, $shapingFunction = null)
+    {
+        $settings = is_null($settings) ? array() : $settings;
+        //Step 1: Get drugQueue Reference
+        $patientAdmissionQueue1 = $this;
+        $conn = $this->conn;
+        //Step 2: Working with Headers and Footers if any
+        if ($showHeaderAndFooter) {
+            $headerTitle = isset($settings['header-title']) ? $settings['header-title'] : "Default Title";
+            $footerTitle = isset($settings['footer-title']) ? $settings['footer-title'] : "Default Title";
+            PDFLayout::createPageHeader($pdf1, $headerTitle, $logofilename, $settings);
+            PDFLayout::createPageFooter($pdf1, $footerTitle, $settings);
+        }
+        //Step 3: Adding a New Page if any
+        if ($addNewPage) {
+            $pdf1->AddPage();
+        }
+        //Write Invoice Information
+        $tableTitle = isset($settings['table-title']) ? $settings['table-title'] : "Admission & Operation";
+        PDFLayout::writeBlock($pdf1, array(("<b><h3>" . $tableTitle . "</h3></b>")), 'L', $settings);
+        //Pulling Invoice Information
+        $listOfInvoices = PatientInvoice::filterRecords($conn, array(
+            "temporaryObjectHolder" => ($patientAdmissionQueue1->getObjectReferenceString())
+        ));
+        //Step 4 -- Temp: Preparing Invoices 
+        if (!is_null($listOfInvoices)) {
+            $headerArray1 = array("S/N", "Currency", "Invoice Number", "Invoiced Amount", "Total Paid");
+            $generalFormat = array("align:0" => "R", "align:1" => "L", "align:2" => "L", "align:3" => "R", "align:4" => "R");
+            $widthRatio = array(1, 2, 4, 4, 4);
+            PDFLayout::writeBlock($pdf1, array(("<b><h3>Invoices Summary</h3></b>")), 'L', $settings);
+            $dataArray1 = array();
+            foreach ($listOfInvoices as $index => $invoice1) {
+                $sn = $index + 1;
+                $code = $invoice1->getCurrency()->getCode();
+                $amount = number_format($invoice1->getAmount(), 2);
+                $invoiceNumber = $invoice1->getInvoiceNumber();
+                $paid = number_format($invoice1->getTotalPaid(), 2);
+                $dataArray1[sizeof($dataArray1)] = array(
+                    'data' => array($sn, $code, $invoiceNumber, $amount, $paid),
+                    'format' => $generalFormat
+                );
+            }
+            PDFLayout::writeTable($pdf1, $dataArray1, $headerArray1, $widthRatio);
+        }
+
+        //Step 4: Preparing General Items like 
+        $headerArray1 = array("S/N", "Drug Name", "Quantity", "Usage", "Status");
+        $generalFormat = array("align:0" => "R", "align:1" => "L", "align:2" => "R", "align:3" => "L", "align:4" => "L");
+        $widthRatio = array(1, 4, 2, 3, 2);
+        //$dataArray1 = array();
+
+        //PDFLayout::writeTable($pdf1, $dataArray1, $headerArray1, $widthRatio);
+        //Finalizing time
+        if ($showCreationAndUpdationTime) {
+            //Do it later
+        }
+        return $pdf1;
+    }
+}

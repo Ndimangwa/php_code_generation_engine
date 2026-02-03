@@ -1,0 +1,57 @@
+THIS MANUAL ASSUMES YOU HAVE A BASIC KNOWLEDGE OF DATABASE, COPY FILES BETWEEN 
+TWO OR MORE MACHINES CONNECTED VIA COMPUTER NETWORK
+
+Contents [ This manual assumes you are using linux, if your are running any other 
+operating system, you will do accordingly, and the paths can be different from machine to machine ]
+1. Pulling new Version of the system
+2. Generating your system code
+3. Pushing new System to the server
+4. Configuring server to run on the new code 
+
+1. Pulling new Version of the system [ from git repository to your local machine ]
+Step 1: Open Terminal or Command Prompt 
+Step 2: Switch to the home directory of the system (zoomtong.devel)
+        Command : cd /var/www/html/zoomtong.devel/
+Step 3: Run the gits Commands [ in case of password : QggdfvXTNSCvsV4PTnhk ]
+        Command : git fetch origin master
+        Command : git reset --hard origin/master
+
+
+2. Updating your system code
+Step 1: You need to generate the system
+    Command : php build.php --init init --target html --schema templates/system.csv
+    Command : cd html 
+Step 2: Update your datapase
+    2.1 : Read Database Configurations 
+        Command : cat config.php
+    2.2 : Remove old database from mysql database 
+    2.3 : Reistall a new database 
+        Command : mysql -u [username] -h [localhost] [database-name] -p < sql/__init_db.sql 
+        Command : mysql -u [username] -h [localhost] [database-name] -p < additionalSQL/addsql.sql 
+    2.4 : Test the system 
+        Web: localhost/zoomtong.devel/html 
+
+3. Pushing new System to the server [ at hospital  make sure 192.168.8.2 is reachable from your laptop ]
+    [ Server path is /var/www/html/ ]
+Step 1: Move back to /var/www/zoomtong.devel in your machine
+    Command : cd .. 
+Step 2: Copy html folder to server [ you can use WinSCP in case of Windows ] 
+    [ Server password : mbwambo@2021 ]
+    Command : scp -r html mbwambo@192.168.8.2:/var/www/html/hmis 
+Step 3 : Logon to the server [ you can use putty in Windows ]
+    [ Server password : mbwambo@2021 ]
+    Command : ssh mbwambo@192.168.8.2
+Step 4 : Go to the system folder 
+    Command : cd /var/www/html/hmis 
+Step 5 : Restore Configurations 
+    Command : cp ../config.php .
+Step 6 : View configurations 
+    Command : cat config.php 
+
+
+4. Configuring Server to run new Code 
+Step 1 : You need to backup the mysql database  [ use mysqldump ]
+Step 2 : You need to delete the existing mysql database [ since the client has not yet started using the system, this can be done ]
+Step 3 : You need to copy a new database [ You can refer no 2 above Updating your system code , Step 2 Update your database ]
+Step 4 : Test your code 
+    Web : 192.168.8.2/hmis

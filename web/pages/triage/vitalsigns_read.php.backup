@@ -1,0 +1,78 @@
+<div class="container data-container mt-2 mb-2">
+    <div class="row">
+        <!-- <div class="col-md-6 d-none d-md-block text-primary"><div class="mb-2 display-2 p-2" style="height: 100%; position: relative;"><span style="position: relative; top: 25%;"><i><?= $profile1->getProfileName() ?></i></span></div></div>
+-->
+        <div class="col-md-10 offset-md-1 mx-auto">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    VITAL SIGNS REPORT
+                </div>
+                <div class="card-body">
+                    <?php
+                    $nextPage = $thispage . "?page=triage";
+                    try {
+                        $conn = new PDO("mysql:host=$host;dbname=$dbname", $config1->getUsername(), $config1->getPassword());
+                        $patient1 = new Patient("Delta", $_REQUEST['patientId'], $conn);
+                        //Get List of Triages
+                        $listOfVitalSigns = VitalSigns::getListOfVitalSignsForPatient($conn, $patient1->getCurrentVisit());
+                        if (is_null($listOfVitalSigns)) {
+                            echo UICardView::getDangerReportCard("Vital Signs", "There is no previous vital signs for the patient");
+                        } else {
+                    ?>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>S/N</th>
+                                            <th>Created On</th>
+                                            <th>Updated On</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $pdfpage = (($profile1->getBaseURL()) . "/documents/pdf/__get_document__.php");
+                                        $pdfpage = str_replace((DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR), DIRECTORY_SEPARATOR, $pdfpage);                
+                                        foreach ($listOfVitalSigns as $index => $vitalSigns1)  {
+                                            $link1 = UIControls::getAnchorTag("View Report", $pdfpage, array(
+                                                "id" => ( $vitalSigns1->getId0() ),
+                                                "class" => ( $vitalSigns1->getMyClassname() ),
+                                                "dtype" => ( Documents::$__VITAL_SIGNS )
+                                            ), array('card-link'), null, array('target' => '_blank'));
+                                        ?>
+                                            <tr>
+                                                <th><?= $index + 1 ?></th>
+                                                <td><?= $vitalSigns1->getTimeOfCreation()->getDateAndTimeString() ?></td>
+                                                <td><?= $vitalSigns1->getTimeOfUpdation()->getDateAndTimeString() ?></td>
+                                                <td><?= $link1 ?></td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                    <?php
+                        }
+                        //Add New Triage
+                        $link1 = UIControls::getAnchorTag("Record Vital Signs", $thispage, array(
+                            "page" => "vitalsigns_create",
+                            "patientId" => ( $patient1->getPatientId() )
+                        ), array("btn", "btn-primary", "add-record"), array(), array());
+                        echo "<div class=\"my-1 text-right\">$link1</div>";
+                        $conn = null;
+                    } catch (Exception $e) {
+                        echo UICardView::getDangerReportCard("Vital Signs", $e->getMessage());
+                    }
+                    ?>
+                </div>
+                <div class="card-footer">
+                    <div class="text-center">
+                        <i><a href="<?= $nextPage ?>" class="card-link">Back to Triage</a></i><br />
+                        <span class="text-muted"><i>Rule: vitalsigns</i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

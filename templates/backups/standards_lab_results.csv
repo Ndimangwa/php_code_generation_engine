@@ -1,0 +1,34 @@
+standardId,service,serviceName,typeOfValue,enumerated,unitOfMeasurement,minimumSafeValue,maximumSafeValue,listOfEnumeratedValues,safeValue,nameOfTest,sex,ageCategory,priority
+1,63,Prostate Specific Antigen (PSA),float,0,ng/m,0,4,,,Prostate Specific Antigen (PSA),,,1
+2,64,Creatinine New Born,float,0,mg/dl,0.3,1,,,Creatinine New Born,,1,1
+3,64,Creatinine Child,float,0,mg/dl,0.3,0.7,,,Creatinine Child,,2,1
+4,64,Creatinine Adolscent,float,0,mg/dl,0.5,1,,,Creatinine Adolscent,,3,1
+5,64,Creatinine Male,float,0,mg/dl,0.7,1.3,,,Creatinine Male,1,,2
+6,64,Creatinine Female,float,0,mg/dl,0.6,1.1,,,Creatinine Female,2,,2
+7,65,Full Blood Count,float,0,,0,1000,,,Full Blood Count,,,1
+8,66,Stool Macroscopic Examination,text,1,,,,Seen_@COMMA@_Not Seen,Not Seen,Stool Macroscopic Examination,,,1
+9,66,Stool Specimen Color,text,1,,,,Brownish_@COMMA@_Black_@COMMA@_Dark Brown_@COMMA@_Whitish_@COMMA@_Green,Brownish,Stool Specimen Color,,,1
+10,66,Stool Consistency,text,1,,,,Formed_@COMMA@_Semi Formed_@COMMA@_Watery,Formed,Stool Consistency,,,1
+11,66,Stool Mucus,text,1,,,,Seen_@COMMA@_Not Seen,Not Seen,Stool Mucus,,,1
+12,66,Stool Blood Stained,text,1,,,,Seen_@COMMA@_Not Seen,Not Seen,Stool Blood Stained,,,1
+13,67,Random Blood Sugar,float,0,mmol/l,3.7,7.5,,,Random Blood Sugar,,,1
+14,67,Fasting Blood Sugar,float,0,mmol/l,3.5,6.5,,,Fasting Blood Sugar,,,2
+15,68,Urinalysis Appearance,text,1,,,,Yellow_@COMMA@_Yellowish_@COMMA@_Cloud_@COMMA@_Turbidity Deep Amber,Yellow,Urinalysis Appearance,,,1
+16,68,Urinalysis PH,float,0,,4.5,7.8,,,Urinalysis PH,,,1
+17,68,Urinalysis Protein,text,1,,,,Positive_@COMMA@_Negative,Negative,Urinalysis Protein,,,1
+18,68,Urinalysis Glucose,text,1,,,,Positive_@COMMA@_Negative,Negative,Urinalysis Glucose,,,1
+19,68,Urinalysis Ketone,text,1,,,,Positive_@COMMA@_Negative,Negative,Urinalysis Ketone,,,1
+20,68,Urinalysis Bilirubin,text,1,,,,Positive_@COMMA@_Negative,Negative,Urinalysis Bilirubin,,,1
+21,68,Urinalysis Nitrite,text,1,,,,Positive_@COMMA@_Negative,Negative,Urinalysis Nitrite,,,1
+22,68,Urinalysis Leukocyte,text,1,,,,Positive_@COMMA@_Negative,Negative,Urinalysis Leukocyte,,,1
+23,68,Urinalysis Urobilinogen,float,0,EU/DI,0.1,1, , ,Urinalysis Urobilinogen,,,1
+24,68,Urinalysis Occult Blood,text,1,,,,Positive_@COMMA@_Negative,Negative,Urinalysis Occult Blood,,,1
+25,69,Pregnancy Test,text,1,,,,Positive_@COMMA@_Negative,Negative,Pregnancy Test,,,1
+26,70,UNI-GOLD HIV TEST,text,1,,,,Positive_@COMMA@_Negative,Negative,UNI-GOLD HIV TEST,,,1
+27,70,BIOLINE HIV TEST,text,1,,,,Positive_@COMMA@_Negative,Negative,BIOLINE HIV TEST,,,1
+28,71,VDRL,text,1,,,,Reactive_@COMMA@_Non Reactive,Non Reactive,VDRL,,,1
+29,72,MRDT,text,1,,,,Positive_@COMMA@_Negative,Negative,MRDT,,,1
+30,73,H.PIROLI,text,1,,,,Positive_@COMMA@_Negative,Negative,H.PIROLI,,,1
+31,74,Blood Grouping,text,1,,,,A Rh+_@COMMA@_A Rh-_@COMMA@_B Rh+_@COMMA@_B Rh-_@COMMA@_O Rh+_@COMMA@_O Rh-,,Blood Grouping,,,1
+32,75,ESR Male,float,0,mm/hr,1,13,,,ESR Male,1,,1
+33,75,ESR Female,float,0,mm/hr,1,20,,,ESR Female,2,,1

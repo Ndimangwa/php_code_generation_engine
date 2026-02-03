@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Test</title>
+    <script src="../cdns/AdminLTE-3.1.0/plugins/jquery/jquery.min.js"></script>
+    <script>
+        (function($)    {
+            $(function()    {
+                const MY_EVENT_NAME = "my_event_0001";
+                //Initiating witch clicks 
+                $('#button1').on('click', function(e)   {
+                    $("#hidden1").trigger(MY_EVENT_NAME, [{ length : "Cheater is the fastest Animal" }]);
+                });
+                //Handling
+                $("#hidden1").on(MY_EVENT_NAME, function(e, param1)   {
+                    const { length } = param1;
+                    window.alert(length);
+                });
+
+                //
+                $('#text1').on("change", function(e)    {
+                    e.preventDefault();
+                    var value = $(this).val();
+                    var data = {
+                        length: value.length,
+                        value: value
+                    };
+                    $("#hidden1").trigger(MY_EVENT_NAME, [ data ]);
+                });
+            });
+        })(jQuery);
+    </script>
+</head>
+<body>
+    <input id="button1" type="button" value="Kindly Click Me"/>
+    <input class="hideme" id="hidden1" type="hidden"/>
+    <input class="hideme" id="hidden2" type="hidden"/>
+    <input type="text" id="text1" />
+</body>
+</html>

@@ -1,0 +1,8 @@
+class,table,colname,property.pname,property.object,property.type,property.ref-property,type,settings.data.role,settings.data.allow-null,settings.data.regex.rule,settings.data.regex.message,settings.data.unique,settings.data.width,settings.data.fixed-width,settings.data.default,settings.data.searchable,settings.data.ref-key-check,settings.ui.control,settings.ui.show-on-page.add,settings.ui.show-on-page.edit,settings.ui.show-on-page.delete,settings.ui.show-on-page.details,settings.ui.do-not-show-on-page.add,settings.ui.do-not-show-on-page.edit,settings.ui.do-not-show-on-page.delete,settings.ui.do-not-show-on-page.details,data.initialvalues,static.variables
+NavigationMenu,_navigationMenu,menuId,menuId,,,,integer,primary,,,,,,,,,,,,,,,,,,,@import://navigationData.csv/menuId,
+,,menuName,menuName,,,,text,value,FALSE,,,,255,,,,,,,,,,,,,,@import://navigationData.csv/menuName,
+,,pageToGo,pageToGo,,,,text,,TRUE,,,,255,,,,,,,,,,,,,,@import://navigationData.csv/pageToGo,
+,,seqno,sequenceNumber,,,,integer,,,,,,,,0,,,,,,,,,,,,@import://navigationData.csv/sequenceNumber,
+,,pId,parentMenu,NavigationMenu,,menuId,object,,TRUE,,,,,,NULL,,,,,,,,,,,,@import://navigationData.csv/parentMenu,
+,,cName,contextName,,,,text,,TRUE,,,,56,,,,,,,,,,,,,,@import://navigationData.csv/cName,
+,,flags,flags,,,,integer,,,,,,,,0,,,,,,,,,,,,,

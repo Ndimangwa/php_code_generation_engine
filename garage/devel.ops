@@ -1,0 +1,8 @@
+W163
+
+1. Tank Coolant ( 163 500 03 49 )
+2. Cpa Tank     ( 163 500 00 06 )
+
+export JAVAFX_HOME=/usr/local/javafx-sdk-17.0.2/lib
+alias javafxc="javac --module-path ${JAVAFX_HOME} --add-modules=javafx.controls,javafx.fxml,javafx.media,j>
+alias javafx="java --module-path ${JAVAFX_HOME} --add-modules=javafx.controls,javafx.fxml,javafx.media,jav>

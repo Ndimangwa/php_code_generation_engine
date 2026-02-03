@@ -1,0 +1,30 @@
+loginId,loginName,password,fullName,group,sex,marital,jobTitle,root,initializationCounter,phone,email,userReference,status,userType,firstSecurityQuestion,firstSecurityAnswer,secondSecurityQuestion,secondSecurityAnswer,firstDayOfAWeek
+1,admin,d033e22ae348aeb5660fc2140aec35850c4da997,System Administrator,1,1,1,1,1,1,787101808,ndimangwa@gmail.com,SystemUser.1,1,1,1,Default Answer,2,Default Answer,1
+2,angelina.elifuraha,7c222fb2927d828af22f592134e8932480637c0d,ANGELINA ELIFURAHA MRUTHU,13,2,1,13,0,1,623103042,angelina.elifuraha@hmis.dev,SystemUser.2,1,1,1,Default Answer,2,Default Answer,1
+3,basila.aloyce,7c222fb2927d828af22f592134e8932480637c0d,BASILA ALOYCE SHIRIMA,7,2,1,7,0,1,746793598,basila.aloyce@hmis.dev,SystemUser.3,1,1,1,Default Answer,2,Default Answer,1
+4,dorcas.orgenes,7c222fb2927d828af22f592134e8932480637c0d,DORCAS   ORGENES   ELIAMINI,3,2,1,3,0,1,744483296,dorcas.orgenes@hmis.dev,SystemUser.4,1,1,1,Default Answer,2,Default Answer,1
+5,dainess.elibariki,7c222fb2927d828af22f592134e8932480637c0d,DAINESS    ELIBARIKI   MOLLEL,3,2,1,3,0,1,754357333,dainess.elibariki@hmis.dev,SystemUser.5,1,1,1,Default Answer,2,Default Answer,1
+6,enighenja.issaya,7c222fb2927d828af22f592134e8932480637c0d,ENIGHENJA   ISSAYA   MBWAMBO,14,2,1,14,0,1,786873114,enighenja.issaya@hmis.dev,SystemUser.6,1,1,1,Default Answer,2,Default Answer,1
+7,eliasifiwe.msuya,7c222fb2927d828af22f592134e8932480637c0d,ELIASIFIWE  MSUYA,3,2,1,3,0,1,785949437,eliasifiwe.msuya@hmis.dev,SystemUser.7,1,1,1,Default Answer,2,Default Answer,1
+8,epiphania.ambros,7c222fb2927d828af22f592134e8932480637c0d,EPIPHANIA   AMBROS   WOISSO,3,2,1,3,0,1,762035389,epiphania.ambros@hmis.dev,SystemUser.8,1,1,1,Default Answer,2,Default Answer,1
+9,jackline.barnabas,7c222fb2927d828af22f592134e8932480637c0d,JACKLINE   BARNABAS   SHAYO,4,2,1,4,0,1,743977754,jackline.barnabas@hmis.dev,SystemUser.9,1,1,1,Default Answer,2,Default Answer,1
+10,joyce.hamis,7c222fb2927d828af22f592134e8932480637c0d,JOYCE   HAMIS   MSEMO,15,2,1,15,0,1,768007474,joyce.hamis@hmis.dev,SystemUser.10,1,1,1,Default Answer,2,Default Answer,1
+11,joyce.hemed,7c222fb2927d828af22f592134e8932480637c0d,JOYCE   HEMED   MBWAMBO,3,2,1,3,0,1,742897394,joyce.hemed@hmis.dev,SystemUser.11,1,1,1,Default Answer,2,Default Answer,1
+12,ester.kyara,7c222fb2927d828af22f592134e8932480637c0d,ESTER  KYARA,5,2,1,5,0,1,,ester.kyara@hmis.dev,SystemUser.12,1,1,1,Default Answer,2,Default Answer,1
+13,dorcas.kangero,7c222fb2927d828af22f592134e8932480637c0d,DORCAS KANGERO,2,2,1,2,0,1,754063725,dorcas.kangero@hmis.dev,SystemUser.13,1,1,1,Default Answer,2,Default Answer,1
+14,yunisi.mailla,7c222fb2927d828af22f592134e8932480637c0d,YUNISI  MAILLA,2,2,1,2,0,1,763500852,yunisi.mailla@hmis.dev,SystemUser.14,1,1,1,Default Answer,2,Default Answer,1
+15,regina.charles,7c222fb2927d828af22f592134e8932480637c0d,REGINA  CHARLES,3,2,1,3,0,1,756207905,regina.charles@hmis.dev,SystemUser.15,1,1,1,Default Answer,2,Default Answer,1
+16,rose.raphael,7c222fb2927d828af22f592134e8932480637c0d,ROSE   RAPHAEL  TILYA,3,2,1,3,0,1,754566701,rose.raphael@hmis.dev,SystemUser.16,1,1,1,Default Answer,2,Default Answer,1
+17,sharifa.stanley,7c222fb2927d828af22f592134e8932480637c0d,SHARIFA  STANLEY   MSHANA,7,2,1,7,0,1,714088578,sharifa.stanley@hmis.dev,SystemUser.17,1,1,1,Default Answer,2,Default Answer,1
+18,tarisila.honorati,7c222fb2927d828af22f592134e8932480637c0d,TARISILA  HONORATI   SHIRIMA,3,2,1,3,0,1,758443575,tarisila.honorati@hmis.dev,SystemUser.18,1,1,1,Default Answer,2,Default Answer,1
+19,sophia.mrema,7c222fb2927d828af22f592134e8932480637c0d,SOPHIA MREMA,2,2,1,2,0,1,763771763,sophia.mrema@hmis.dev,SystemUser.19,1,1,1,Default Answer,2,Default Answer,1
+20,frank.anatory,7c222fb2927d828af22f592134e8932480637c0d,FRANK ANATORY,9,1,1,9,0,1,622330240,frank.anatory@hmis.dev,MedicalDoctor.1,1,2,1,Default Answer,2,Default Answer,1
+21,amos.gedi,7c222fb2927d828af22f592134e8932480637c0d,AMOS   GEDI  MELEKA,12,1,1,12,0,1,742172873,amos.gedi@hmis.dev,SystemUser.20,1,1,1,Default Answer,2,Default Answer,1
+22,erick.albert,7c222fb2927d828af22f592134e8932480637c0d,ERICK   ALBERT  CHAMBASI,6,1,1,6,0,1,625681008,erick.albert@hmis.dev,SystemUser.21,1,1,1,Default Answer,2,Default Answer,1
+23,michael.mnana,7c222fb2927d828af22f592134e8932480637c0d,MICHAEL MNANA,12,1,1,12,0,1,754481240,michael.mnana@hmis.dev,SystemUser.22,1,1,1,Default Answer,2,Default Answer,1
+24,jasper.said,7c222fb2927d828af22f592134e8932480637c0d,JASPER   SAID   MBWAMBO,10,1,1,10,0,1,754499424,jasper.said@hmis.dev,MedicalDoctor.2,1,2,1,Default Answer,2,Default Answer,1
+25,nicholaus.ngowi,7c222fb2927d828af22f592134e8932480637c0d,NICHOLAUS   NGOWI,10,1,1,10,0,1,767175560,nicholaus.ngowi@hmis.dev,MedicalDoctor.3,1,2,1,Default Answer,2,Default Answer,1
+26,orgnesess.jasper,7c222fb2927d828af22f592134e8932480637c0d,ORGENESS   JASPER   MBWAMBO,10,1,1,10,0,1,713863733,orgnesess.jasper@hmis.dev,MedicalDoctor.4,1,2,1,Default Answer,2,Default Answer,1
+27,apolnary.elias,7c222fb2927d828af22f592134e8932480637c0d,APOLNARY ELIAS CHUWA,11,1,1,11,0,1,,apolnary.elias@hmis.dev,SystemUser.23,1,1,1,Default Answer,2,Default Answer,1
+28,willison.mbise,7c222fb2927d828af22f592134e8932480637c0d,WILLISON   MBISE,11,1,1,11,0,1,674529581,willison.mbise@hmis.dev,SystemUser.24,1,1,1,Default Answer,2,Default Answer,1
+29,venant.lagweni,7c222fb2927d828af22f592134e8932480637c0d,VENANT LAGWENI,2,1,1,2,0,1,754562889,venant.lagweni@hmis.dev,SystemUser.30,1,1,1,Default Answer,2,Default Answer,1

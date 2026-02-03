@@ -1,0 +1,53 @@
+<?php 
+require "../../html/vendor/autoload.php";
+require_once("../../html/sys/__autoload__.php");
+
+//$pdf = new CustomPdfGenerator(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+$pdf1 = new PDFEngine(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+$pdf1->setFooterText("Mbwambo Super Specialized Hospital");
+$pdf1->setHeaderText($pdf1->getFooterText());
+$pdf1->setDefaultConfigurations();
+
+
+//
+$pdf1->setLogoFile("mbwambo.png");
+//Start A New Page
+$pdf1->AddPage();
+//date and invoice Number 
+$pdf1->write(0, "\n", '', 0, 'C', true, 0, false, false, 0);
+$pdf1->writeHTML('<b>DATE:</b>01/01/21');
+$pdf1->writeHTML('<b>INVOICE#</b>12');
+$pdf1->write(0, "\n", '', 0, 'C', true, 0, false, false, 0);
+//Address
+$pdf1->writeHTML("84 Norton Street");
+$pdf1->writeHTML("NORMANHURST");
+$pdf1->writeHTML("New South Wales, 2076");
+$pdf1->write(0, "\n", '', 0, 'C', true, 0, false, false, 0);
+// bill to
+$pdf1->writeHTML("<b>BILL TO:</b>", true, false, false, false, 'R');
+$pdf1->writeHTML("22 South Molle Boulevard,", true, false, false, false, 'R');
+$pdf1->writeHTML("KOOROOMOOL,", true, false, false, false, 'R');
+$pdf1->writeHTML("Queensland, 4854", true, false, false, false, 'R');
+$pdf1->Write(0, "\n", '', 0, 'C', true, 0, false, false, 0);
+//Invoice Table starts here 
+$header = array('DESCRIPTION', 'UNITS', 'RATE $', 'AMOUNT');
+$data = array(
+    array('Item #1', '1', '100', '100'),
+    array('Item #2', '2', '200', '400')
+);
+$pdf1->printTable($header, $data);
+$pdf1->Ln();
+
+// comments
+$pdf1->SetFont('', '', 12);
+$pdf1->writeHTML("<b>OTHER COMMENTS:</b>");
+$pdf1->writeHTML("Method of payment: <i>PAYPAL</i>");
+$pdf1->writeHTML("PayPal ID: <i>katie@paypal.com");
+$pdf1->Write(0, "\n\n\n", '', 0, 'C', true, 0, false, false, 0);
+$pdf1->writeHTML("If you have any questions about this invoice, please contact:", true, false, false, false, 'C');
+$pdf1->writeHTML("Katie A Falk, (07) 4050 2235, katie@sks.com", true, false, false, false, 'C');
+
+//Output
+$pdf1->Output(__DIR__ . '/invoice_12.pdf');
+?>

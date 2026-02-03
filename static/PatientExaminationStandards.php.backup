@@ -1,0 +1,133 @@
+<?php
+class PatientExaminationStandards
+{
+    public static function isValueSafe($standard1, $value)
+    {
+        $issafe = true;
+        if ($standard1->isEnumerated()) {
+            $refSafeValue = $standard1->getSafeEnumeratedValue();
+            $issafe = (is_null($refSafeValue) || (trim($refSafeValue) == "") || (strtolower($value) == strtolower($refSafeValue)));
+        } else if (in_array($standard1->getTypeOfValue(), array('file')))    {
+            $issafe = true;
+        } else {
+            if (in_array($standard1->getTypeOfValue(), array('float', 'integer'))) {
+                $minValue = $standard1->getMinimumSafeValue();
+                $maxValue = $standard1->getMaximumSafeValue();
+                $minValue = is_null($minValue) ? -99999999 : $minValue;
+                $maxValue = is_null($maxValue) ? 99999999 : $maxValue;
+                //Now proceed
+                $issafe = ($value >= $minValue && $value <= $maxValue);
+            }
+        }
+        return $issafe;
+    }
+    public static function getListOfStandards($conn, $serviceId, $sexId = null, $ageCategoryId = null)
+    {
+        $filter = array(
+            "serviceId" => $serviceId
+        );
+        /*if (! is_null($sexId)) $filter['sexId'] = $sexId;
+        if (! is_null($ageCategoryId)) $filter['ageCategory'] = $ageCategoryId;
+        echo "{serviceId + sexId + ageCategoryId} = { $serviceId + $sexId  + $ageCategoryId }";
+        */
+        $t1 = __data__::selectQuery($conn, self::getClassname(), array('standardId', 'sex', 'ageCategory'), $filter, false);
+        $listOfStandards = array();
+        foreach ($t1['property'] as $row1) {
+            if ((is_null($row1['sex']) || ($row1['sex'] == $sexId)) && (is_null($row1['ageCategory']) || ($row1['ageCategory'] == $ageCategoryId))) {
+                $listOfStandards[sizeof($listOfStandards)] = new PatientExaminationStandards("Delta", $row1['standardId'], $conn);
+            }
+        }
+        if (sizeof($listOfStandards) == 0) $listOfStandards = null;
+        return $listOfStandards;
+    }
+    public static function getUIControls($listOfStandards, $default_select_empty_value, $block1 = null, $fileTypeAcceptArray1 = null)
+    {
+        /* block[standardId]['prop'] = value */
+        if (is_null($listOfStandards)) return "";
+        if (is_null($block1)) $block1 = array();
+        $window1 = "";
+        foreach ($listOfStandards as $standard1) {
+            $id = $standard1->getStandardId();
+            $t_id = "standard_$id";
+            $caption = $standard1->getServiceName();
+            $window1 .= "<div class=\"form-group row\"><label class=\"col-sm-2 col-form-label\" for=\"$id\">$caption</label><div class=\"col-sm-10\">";
+            if ($standard1->isEnumerated()) {
+                $window1 .= "<select class=\"form-control\" id=\"$t_id\" name=\"standard[$id]\" required><option value=\"$default_select_empty_value\">(--Select--)</option>";
+                if (!is_null($standard1->getListOfEnumeratedValues())) {
+                    foreach (explode(",", $standard1->getListOfEnumeratedValues()) as $value) {
+                        $window1 .= "<option value=\"$value\">$value</option>";
+                    }
+                }
+                $window1 .= "</select>";
+            } else {
+                $type_step = "1";
+                $type = in_array($standard1->getTypeOfValue(), array('float', 'integer')) ? "number" : (in_array($standard1->getTypeOfValue(), array('file')) ? "file" : "text");
+                if ($standard1->getTypeOfValue() == "float") $type_step = "0.0001";
+                $ds1 = isset($block1[$standard1->getStandardId()]) ? $block1[$standard1->getStandardId()] : array();
+                $placeholder = isset($ds1['placeholder']) ? $ds1['placeholder'] : null;
+                $validationExpression = isset($ds1['validation-expression']) ? $ds1['validation-expression'] : null;
+                $validationMessage = isset($ds1['validation-message']) ? $ds1['validation-message'] : null;
+                $maxLength = isset($ds1['max-length']) ? $ds1['max-length'] : null;
+                $required = isset($ds1['required']) ? $ds1['required'] : true;
+
+                $plist = "";
+                if (!is_null($placeholder)) $plist .= "placeholder = \"$placeholder\"";
+                if (!is_null($validationExpression)) {
+                    if (is_null($validationMessage)) $validationMessage = "Default Validation Failded";
+                    $plist .= " data-validation=\"true\" data-validation-expression=\"$validationExpression\" data-validation-control=\"text\" data-validation-message=\"$validationMessage\"";
+                }
+                if (!is_null($maxLength)) $plist .= " data-max-length=\"$maxLength\"";
+                if ($required) $plist .= " required";
+
+                $filterString = "";
+                if ($type == "file")    {
+                    if (! is_null($fileTypeAcceptArray1))   {
+                        $filterString = implode(",", $fileTypeAcceptArray1);
+                        $filterString = "accept = \"$filterString\"";
+                    }
+                }
+                $window1 .= "<input class=\"form-control\" type=\"$type\" id=\"$t_id\" name=\"standard[$id]\" $plist step=\"$type_step\" $filterString/>";
+            }
+            $window1 .= "</div></div>";
+        }
+        return $window1;
+    }
+    public static function getUIForm($conn, $profile1, $examinationNotifyQueue1, $forwardURL, $default_select_empty_value, $buttonText = "Submit Data", $customHiddenFields = null, $fieldBlock1 = null, $fileTypeAcceptArray1 = null)
+    {
+        $patient1 = $examinationNotifyQueue1->getExaminationQueue()->getPatient();
+        $category1 = AgeCategory::getAgeCategory($conn, $patient1->calculateAge($profile1));
+        $listOfStandards = self::getListOfStandards(
+            $conn,
+            $examinationNotifyQueue1->getService()->getServiceId(),
+            is_null($patient1->getSex()) ? null : $patient1->getSex()->getSexId(),
+            is_null($category1) ? null : ($category1->getCategoryId())
+        );
+        $id = __object__::getCodeString(32);
+        $formid = "__form__$id";
+        $errorid = "__error_$id";
+        $buttonid = "__button_$id";
+        $id = "__id__$id";
+        $enctype = "";
+        //We need to check if we need enctype 
+        if (! is_null($listOfStandards))    {
+            foreach ($listOfStandards as $standard1)    {
+                if (in_array($standard1->getTypeOfValue(), array('file')))  {
+                    $enctype = "enctype=\"multipart/form-data\"";
+                    break;
+                }
+            }
+        }
+        $window1 = "<form id=\"$formid\" class=\"form-horizontal\" method=\"POST\" action=\"$forwardURL\" $enctype>";
+        if (!is_null($customHiddenFields)) {
+            foreach ($customHiddenFields as $key => $value) {
+                $window1 .= "<input type=\"hidden\" name=\"$key\" value=\"$value\"/>";
+            }
+        }
+        $window1 .= self::getUIControls($listOfStandards, $default_select_empty_value, $fieldBlock1, $fileTypeAcceptArray1);
+        $window1 .= "<div class=\"p-2 ui-sys-error-message\" id=\"$errorid\"></div>";
+        $window1 .= "<div><input type=\"submit\" class=\"btn btn-primary btn-block btn-click-default\" value=\"$buttonText\" id=\"$buttonid\"/></div>";
+        $window1 .= "</form>";
+        $window1 .= "<script type=\"text/javascript\">(function(\$)    {    \$(function()    {        $('#$formid').on('submit', function(e)  {            var button1 = \$('#$buttonid');            var error1 = \$('#$errorid');            if (! window.generalFormValidation(button1, \$(this), error1, Constant)) {                e.preventDefault();                return false;            }            return true;        });    });})(jQuery);</script>";
+        return $window1;
+    }
+}

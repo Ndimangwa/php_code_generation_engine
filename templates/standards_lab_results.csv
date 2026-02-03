@@ -1,0 +1,81 @@
+standardId,service,serviceName,typeOfValue,enumerated,unitOfMeasurement,minimumSafeValue,maximumSafeValue,listOfEnumeratedValues,safeValue,nameOfTest,sex,ageCategory,priority
+1,63,Prostate Specific Antigen (PSA),float,0,ng/m,0,4,,,Prostate Specific Antigen (PSA),,,1
+2,64,Creatinine New Born,float,0,mg/dl,0.3,1,,,Creatinine New Born,,1,1
+3,64,Creatinine Child,float,0,mg/dl,0.3,0.7,,,Creatinine Child,,2,1
+4,64,Creatinine Adolscent,float,0,mg/dl,0.5,1,,,Creatinine Adolscent,,3,1
+5,64,Creatinine Male,float,0,mg/dl,0.7,1.3,,,Creatinine Male,1,,2
+6,64,Creatinine Female,float,0,mg/dl,0.6,1.1,,,Creatinine Female,2,,2
+7,65,Full Blood Count,float,0,,0,1000,,,Full Blood Count,,,1
+8,66,Stool Macroscopic Examination,text,1,,,,Seen_@COMMA@_Not Seen,Not Seen,Stool Macroscopic Examination,,,1
+9,66,Stool Specimen Color,text,1,,,,Brownish_@COMMA@_Black_@COMMA@_Dark Brown_@COMMA@_Whitish_@COMMA@_Green,Brownish,Stool Specimen Color,,,1
+10,66,Stool Consistency,text,1,,,,Formed_@COMMA@_Semi Formed_@COMMA@_Watery,Formed,Stool Consistency,,,1
+11,66,Stool Mucus,text,1,,,,Seen_@COMMA@_Not Seen,Not Seen,Stool Mucus,,,1
+12,66,Stool Blood Stained,text,1,,,,Seen_@COMMA@_Not Seen,Not Seen,Stool Blood Stained,,,1
+13,67,Random Blood Sugar,float,0,mmol/l,3.7,7.5,,,Random Blood Sugar,,,1
+14,67,Fasting Blood Sugar,float,0,mmol/l,3.5,6.5,,,Fasting Blood Sugar,,,2
+15,68,Urinalysis Appearance,text,1,,,,Yellow_@COMMA@_Yellowish_@COMMA@_Cloud_@COMMA@_Turbidity Deep Amber,Yellow,Urinalysis Appearance,,,1
+16,68,Urinalysis PH,float,0,,4.5,7.8,,,Urinalysis PH,,,1
+17,68,Urinalysis Protein,text,1,,,,Positive_@COMMA@_Negative,Negative,Urinalysis Protein,,,1
+18,68,Urinalysis Glucose,text,1,,,,Positive_@COMMA@_Negative,Negative,Urinalysis Glucose,,,1
+19,68,Urinalysis Ketone,text,1,,,,Positive_@COMMA@_Negative,Negative,Urinalysis Ketone,,,1
+20,68,Urinalysis Bilirubin,text,1,,,,Positive_@COMMA@_Negative,Negative,Urinalysis Bilirubin,,,1
+21,68,Urinalysis Nitrite,text,1,,,,Positive_@COMMA@_Negative,Negative,Urinalysis Nitrite,,,1
+22,68,Urinalysis Leukocyte,text,1,,,,Positive_@COMMA@_Negative,Negative,Urinalysis Leukocyte,,,1
+23,68,Urinalysis Urobilinogen,float,0,EU/DI,0.1,1, , ,Urinalysis Urobilinogen,,,1
+24,68,Urinalysis Occult Blood,text,1,,,,Positive_@COMMA@_Negative,Negative,Urinalysis Occult Blood,,,1
+25,69,Pregnancy Test,text,1,,,,Positive_@COMMA@_Negative,Negative,Pregnancy Test,,,1
+26,70,UNI-GOLD HIV TEST,text,1,,,,Positive_@COMMA@_Negative,Negative,UNI-GOLD HIV TEST,,,1
+27,70,BIOLINE HIV TEST,text,1,,,,Positive_@COMMA@_Negative,Negative,BIOLINE HIV TEST,,,1
+28,71,VDRL,text,1,,,,Reactive_@COMMA@_Non Reactive,Non Reactive,VDRL,,,1
+29,72,MRDT,text,1,,,,Positive_@COMMA@_Negative,Negative,MRDT,,,1
+30,73,H.PIROLI,text,1,,,,Positive_@COMMA@_Negative,Negative,H.PIROLI,,,1
+31,74,Blood Grouping,text,1,,,,A Rh+_@COMMA@_A Rh-_@COMMA@_B Rh+_@COMMA@_B Rh-_@COMMA@_O Rh+_@COMMA@_O Rh-,,Blood Grouping,,,1
+32,75,ESR Male,float,0,mm/hr,1,13,,,ESR Male,1,,1
+33,75,ESR Female,float,0,mm/hr,1,20,,,ESR Female,2,,1
+34,1,X-RAY ABDOMEN-KUB,file,0,,,,,,X-RAY ABDOMEN-KUB,,,1
+35,2,X-RAY ABDOMEN-SUPINE/ERECT,file,0,,,,,,X-RAY ABDOMEN-SUPINE/ERECT,,,1
+36,3,X-RAY ANKLE,file,0,,,,,,X-RAY ANKLE,,,1
+37,4,X-RAY CALCANEUM,file,0,,,,,,X-RAY CALCANEUM,,,1
+38,5,X-RAY CERVICAL SPINE,file,0,,,,,,X-RAY CERVICAL SPINE,,,1
+39,6,X-RAY CERVICAL SPINE AP&LAT-OBLIQUES,file,0,,,,,,X-RAY CERVICAL SPINE AP&LAT-OBLIQUES,,,1
+40,7,X-RAY CHEST AP,file,0,,,,,,X-RAY CHEST AP,,,1
+41,8,X-RAY CHEST AP AND LATERAL,file,0,,,,,,X-RAY CHEST AP AND LATERAL,,,1
+42,9,X-RAY CLAVICLE,file,0,,,,,,X-RAY CLAVICLE,,,1
+43,10,X-RAY ELBOW,file,0,,,,,,X-RAY ELBOW,,,1
+44,11,X-RAY FACIAL BONES/ORBITS,file,0,,,,,,X-RAY FACIAL BONES/ORBITS,,,1
+45,12,X-RAY FEMUR,file,0,,,,,,X-RAY FEMUR,,,1
+46,13,X-RAY FINGER,file,0,,,,,,X-RAY FINGER,,,1
+47,14,X-RAY FOOT,file,0,,,,,,X-RAY FOOT,,,1
+48,15,X-RAY FOREARM,file,0,,,,,,X-RAY FOREARM,,,1
+49,16,X-RAY HAND,file,0,,,,,,X-RAY HAND,,,1
+50,17,X-RAY HIP,file,0,,,,,,X-RAY HIP,,,1
+51,18,X-RAY KNEE-AP AND LATERAL,file,0,,,,,,X-RAY KNEE-AP AND LATERAL,,,1
+52,19,X-RAY LEG,file,0,,,,,,X-RAY LEG,,,1
+53,20,X-RAY LUMBER SPINE AP&LAT,file,0,,,,,,X-RAY LUMBER SPINE AP&LAT,,,1
+54,21,X-RAY LUMBER SPINE AP&LAT-OBLIQUES,file,0,,,,,,X-RAY LUMBER SPINE AP&LAT-OBLIQUES,,,1
+55,22,X-RAY MANDIBLE,file,0,,,,,,X-RAY MANDIBLE,,,1
+56,23,X-RAY MASTOID-BILATERAL,file,0,,,,,,X-RAY MASTOID-BILATERAL,,,1
+57,24,X-RAY NASAL BONE,file,0,,,,,,X-RAY NASAL BONE,,,1
+58,25,X-RAY PARANASAL SINUSES,file,0,,,,,,X-RAY PARANASAL SINUSES,,,1
+59,26,X-RAY PELVIC,file,0,,,,,,X-RAY PELVIC,,,1
+60,27,X-RAY RIBS,file,0,,,,,,X-RAY RIBS,,,1
+61,28,X-RAY SCAPULA,file,0,,,,,,X-RAY SCAPULA,,,1
+62,29,X-RAY SHOULDER,file,0,,,,,,X-RAY SHOULDER,,,1
+63,30,X-RAY SKELETAL SURVEY UNDER 5YRS,file,0,,,,,,X-RAY SKELETAL SURVEY UNDER 5YRS,,,1
+64,31,X-RAY ADENOIDS,file,0,,,,,,X-RAY ADENOIDS,,,1
+65,32,X-RAY SKULL STUDIES-AP AND LATERAL,file,0,,,,,,X-RAY SKULL STUDIES-AP AND LATERAL,,,1
+66,33,X-RAY T.M JOINTS,file,0,,,,,,X-RAY T.M JOINTS,,,1
+67,34,X-RAY ORBITS-GAZE UP&GAZE DOWN,file,0,,,,,,X-RAY ORBITS-GAZE UP&GAZE DOWN,,,1
+68,35,USS WHOLE ABNOMEN,file,0,,,,,,USS WHOLE ABNOMEN,,,1
+69,36,USS BREAST,file,0,,,,,,USS BREAST,,,1
+70,37,USS THYROIDS,file,0,,,,,,USS THYROIDS,,,1
+71,38,USS PELVIC,file,0,,,,,,USS PELVIC,,,1
+72,39,USS KUB,file,0,,,,,,USS KUB,,,1
+73,40,USS NECK,file,0,,,,,,USS NECK,,,1
+74,41,ECHO,file,0,,,,,,ECHO,,,1
+75,42,VASCULAR DOPPLER,file,0,,,,,,VASCULAR DOPPLER,,,1
+76,43,USS BRAIN,file,0,,,,,,USS BRAIN,,,1
+77,44,USS SOFT TISSUE,file,0,,,,,,USS SOFT TISSUE,,,1
+78,45,USS OPTHALMOLOGY,file,0,,,,,,USS OPTHALMOLOGY,,,1
+79,46,ECG,file,0,,,,,,ECG,,,1
+80,47,USS OBSTETRICS,file,0,,,,,,USS OBSTETRICS,,,1

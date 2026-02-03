@@ -1,0 +1,16 @@
+groupId,groupName,parentGroup,root
+1,System,,1
+2,Ass/Nurse Officer,1,0
+3,Nurse Auxillary,1,0
+4,Enrolled Nurse,1,0
+5,Laboratory,1,0
+6,Pharmacist,1,0
+7,Medical Record,1,0
+8,Medical Doctor,1,0
+9,Clinical Officer,1,0
+10,Urology,1,0
+11,Security,1,0
+12,Radiographer,1,0
+13,Community,1,0
+14,Admin,1,0
+15,Laboratory Assistant,1,0

@@ -1,0 +1,259 @@
+countryId,countryName,abbreviation,code,timezone
+1,Afghanistan,AF,255,300
+2,Akrotiri,0,255,300
+3,Albania,AL,255,300
+4,Algeria,DZ,255,300
+5,American Samoa,AS,255,300
+6,Andorra,AD,255,300
+7,Angola,AO,255,300
+8,Anguilla,AI,255,300
+9,Antarctica,AQ,255,300
+10,Antigua and Barbuda,AG,255,300
+11,Argentina,AR,255,300
+12,Armenia,AM,255,300
+13,Aruba,AW,255,300
+14,Ashmore and Cartier Islands,0,255,300
+15,Australia,AU,255,300
+16,Austria,AT,255,300
+17,Azerbaijan,0,255,300
+18,Bahamas The,BS,255,300
+19,Bahrain,BH,255,300
+20,Bangladesh,BD,255,300
+21,Barbados,BB,255,300
+22,Bassas da India,0,255,300
+23,Belarus,BY,255,300
+24,Belgium,BE,255,300
+25,Belize,BZ,255,300
+26,Benin,BJ,255,300
+27,Bermuda,BM,255,300
+28,Bhutan,BT,255,300
+29,Bolivia,BO,255,300
+30,Bosnia and Herzegovina,BA,255,300
+31,Botswana,BW,255,300
+32,Bouvet Island,BV,255,300
+33,Brazil,BR,255,300
+34,British Indian Ocean Territory,IO,255,300
+35,British Virgin Islands,0,255,300
+36,Brunei,BN,255,300
+37,Bulgaria,BG,255,300
+38,Burkina Faso,BF,255,300
+39,Burma,MM,255,300
+40,Burundi,BI,255,300
+41,Cambodia,KH,255,300
+42,Cameroon,CM,255,300
+43,Canada,CA,255,300
+44,Cape Verde,CV,255,300
+45,Cayman Islands,KY,255,300
+46,Central African Republic,CF,255,300
+47,Chad,TD,255,300
+48,Chile,CL,255,300
+49,China,CN,255,300
+50,Christmas Island,CX,255,300
+51,Clipperton Island,0,255,300
+52,Cocos (Keeling) Islands,CC,255,300
+53,Colombia,CO,255,300
+54,Comoros,KM,255,300
+55,Congo Democratic Republic of th,CD,255,300
+56,Congo Republic of the,CG,255,300
+57,Cook Islands,CK,255,300
+58,Coral Sea Islands,0,255,300
+59,Costa Rica,CR,255,300
+60,Cote d'Ivoire,CI,255,300
+61,Croatia,HR,255,300
+62,Cuba,CU,255,300
+63,Cyprus,CY,255,300
+64,Czech Republic,CZ,255,300
+65,Denmark,DK,255,300
+66,Dhekelia,0,255,300
+67,Djibouti,DJ,255,300
+68,Dominica,DM,255,300
+69,Dominican Republic,DO,255,300
+70,Ecuador,EC,255,300
+71,Egypt,EG,255,300
+72,El Salvador,SV,255,300
+73,Equatorial Guinea,GQ,255,300
+74,Eritrea,ER,255,300
+75,Estonia,EE,255,300
+76,Ethiopia,ET,255,300
+77,Europa Island,0,255,300
+78,Falkland Islands (Islas Malvinas,FK,255,300
+79,Faroe Islands,FO,255,300
+80,Fiji,FJ,255,300
+81,Finland,FI,255,300
+82,France,FR,255,300
+83,French Guiana,GF,255,300
+84,French Polynesia,PF,255,300
+85,French Southern and Antarctic La,TF,255,300
+86,Gabon,GA,255,300
+87,Gambia The,GM,255,300
+88,Gaza Strip,0,255,300
+89,Georgia,GE,255,300
+90,Germany,DE,255,300
+91,Ghana,GH,255,300
+92,Gibraltar,GI,255,300
+93,Glorioso Islands,0,255,300
+94,Greece,GR,255,300
+95,Greenland,GL,255,300
+96,Grenada,GD,255,300
+97,Guadeloupe,GP,255,300
+98,Guam,GU,255,300
+99,Guatemala,GT,255,300
+100,Guernsey,0,255,300
+101,Guinea,GN,255,300
+102,Guinea-Bissau,GW,255,300
+103,Guyana,GY,255,300
+104,Haiti,HT,255,300
+105,Heard Island and McDonald Island,HM,255,300
+106,Holy See (Vatican City),VA,255,300
+107,Honduras,HN,255,300
+108,Hong Kong,HK,255,300
+109,Hungary,HU,255,300
+110,Iceland,IS,255,300
+111,India,IN,255,300
+112,Indonesia,ID,255,300
+113,Iran,IR,255,300
+114,Iraq,IQ,255,300
+115,Ireland,IE,255,300
+116,Isle of Man,0,255,300
+117,Israel,IL,255,300
+118,Italy,IT,255,300
+119,Jamaica,JM,255,300
+120,Jan Mayen,0,255,300
+121,Japan,JP,255,300
+122,Jersey,0,255,300
+123,Jordan,JO,255,300
+124,Juan de Nova Island,0,255,300
+125,Kazakhstan,KZ,255,300
+126,Kenya,KE,255,300
+127,Kiribati,KI,255,300
+128,Korea North,0,255,300
+129,Korea South,0,255,300
+130,Kuwait,KP,255,300
+131,Kyrgyzstan,KG,255,300
+132,Laos,LA,255,300
+133,Latvia,LV,255,300
+134,Lebanon,LB,255,300
+135,Lesotho,LS,255,300
+136,Liberia,LR,255,300
+137,Libya,LY,255,300
+138,Liechtenstein,LI,255,300
+139,Lithuania,LT,255,300
+140,Luxembourg,LU,255,300
+141,Macau,MO,255,300
+142,Macedonia,MK,255,300
+143,Madagascar,MG,255,300
+144,Malawi,MW,255,300
+145,Malaysia,MY,255,300
+146,Maldives,MV,255,300
+147,Mali,ML,255,300
+148,Malta,MT,255,300
+149,Marshall Islands,MH,255,300
+150,Martinique,MQ,255,300
+151,Mauritania,MR,255,300
+152,Mauritius,MU,255,300
+153,Mayotte,YT,255,300
+154,Mexico,MX,255,300
+155,Micronesia Federated States of,FM,255,300
+156,Moldova,MD,255,300
+157,Monaco,MC,255,300
+158,Mongolia,MN,255,300
+159,Montserrat,MS,255,300
+160,Morocco,MA,255,300
+161,Mozambique,MZ,255,300
+162,Namibia,NA,255,300
+163,Nauru,NR,255,300
+164,Navassa Island,0,255,300
+165,Nepal,NP,255,300
+166,Netherlands,NL,255,300
+167,Netherlands Antilles,AN,255,300
+168,New Caledonia,NC,255,300
+169,New Zealand,NZ,255,300
+170,Nicaragua,NI,255,300
+171,Niger,NE,255,300
+172,Nigeria,NG,255,300
+173,Niue,NU,255,300
+174,Norfolk Island,NF,255,300
+175,Northern Mariana Islands,MP,255,300
+176,Norway,NO,255,300
+177,Oman,OM,255,300
+178,Pakistan,PK,255,300
+179,Palau,PW,255,300
+180,Panama,PA,255,300
+181,Papua New Guinea,PG,255,300
+182,Paracel Islands,0,255,300
+183,Paraguay,PY,255,300
+184,Peru,PE,255,300
+185,Philippines,PH,255,300
+186,Pitcairn Islands,PN,255,300
+187,Poland,PL,255,300
+188,Portugal,PT,255,300
+189,Puerto Rico,PR,255,300
+190,Qatar,QA,255,300
+191,Reunion,RE,255,300
+192,Romania,RO,255,300
+193,Russia,RU,255,300
+194,Rwanda,RW,255,300
+195,Saint Helena,0,255,300
+196,Saint Kitts and Nevis,KN,255,300
+197,Saint Lucia,LC,255,300
+198,Saint Pierre and Miquelon,0,255,300
+199,Saint Vincent and the Grenadines,VC,255,300
+200,Samoa,WS,255,300
+201,San Marino,SM,255,300
+202,Sao Tome and Principe,ST,255,300
+203,Saudi Arabia,SA,255,300
+204,Senegal,SN,255,300
+205,Serbia and Montenegro,RS,255,300
+206,Seychelles,SC,255,300
+207,Sierra Leone,SL,255,300
+208,Singapore,SG,255,300
+209,Slovakia,SK,255,300
+210,Slovenia,SI,255,300
+211,Solomon Islands,SB,255,300
+212,Somalia,SO,255,300
+213,South Africa,ZA,255,300
+214,South Georgia and the South Sand,GS,255,300
+215,Spain,ES,255,300
+216,Spratly Islands,0,255,300
+217,Sri Lanka,LK,255,300
+218,Sudan,SD,255,300
+219,Suriname,SR,255,300
+220,Svalbard,SJ,255,300
+221,Swaziland,SZ,255,300
+222,Sweden,SE,255,300
+223,Switzerland,CH,255,300
+224,Syria,SY,255,300
+225,Taiwan,TW,255,300
+226,Tajikistan,TJ,255,300
+227,Tanzania,TZ,255,300
+228,Thailand,TH,255,300
+229,Timor-Leste,0,255,300
+230,Togo,TG,255,300
+231,Tokelau,TK,255,300
+232,Tonga,TO,255,300
+233,Trinidad and Tobago,TT,255,300
+234,Tromelin Island,0,255,300
+235,Tunisia,TN,255,300
+236,Turkey,TR,255,300
+237,Turkmenistan,TM,255,300
+238,Turks and Caicos Islands,TC,255,300
+239,Tuvalu,TV,255,300
+240,Uganda,UG,255,300
+241,Ukraine,UA,255,300
+242,United Arab Emirates,AE,255,300
+243,United Kingdom,GB,255,300
+244,United States,US,255,300
+245,Uruguay,UY,255,300
+246,Uzbekistan,UZ,255,300
+247,Vanuatu,VU,255,300
+248,Venezuela,VE,255,300
+249,Vietnam,VN,255,300
+250,Virgin Islands,VI,255,300
+251,Wake Island,0,255,300
+252,Wallis and Futuna,WF,255,300
+253,West Bank,0,255,300
+254,Western Sahara,EH,255,300
+255,Yemen,YE,255,300
+256,Zambia,ZM,255,300
+257,Zimbabwe,ZW,255,300
+258,South Sudan,SS,255,300

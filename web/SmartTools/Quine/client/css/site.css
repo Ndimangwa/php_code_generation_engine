@@ -1,0 +1,25 @@
+body	{ max-width: 1280px; margin: 0 auto; padding: 0 5px; color: maroon; font-family: verdana, arial, sans-serif; font-size: 18px;}
+h1,h2,h3,h4,p	{ margin: 0; }
+h1	{ font-size: 1.9em; }
+h2	{ font-size: 1.1em; }
+h3	{ font-size: 1em; }
+form	{ margin: 0; }
+#main	{ min-width: 600px; }
+ul, li	{padding: 0; margin: 0; }
+li	{list-style-type: none; }
+input[type="text"], input[type="password"]	{ text-align: center; }
+
+.yi-sys-content { width: 92%; margin: 16px;  margin-top: 24px; margin-left: auto; margin-right: auto; text-align: center; background: #efefef; }
+.yi-sys-content-header	{ font-size: 1.6em; font-weight: bold; }
+.yi-sys-content-footer	{ font-size: 0.9em; font-style: italic; }
+.yi-sys-error-message 	{ font-size: 0.8em; font-weight: bold; font-style: italic; color: red; text-align: center; }
+.yi-sys-display-table	{ width: 100%;}
+.yi-sys-display-table td, th { text-align: left; padding: 1px; padding-left: 4px; border: 1px solid black; background-color: white; }
+.yi-sys-display-result { font-size: 1.2em; font-weight: bold; font-style: italic; padding: 1px; 
+	padding: 2px; padding-top: 32px; padding-bottom: 32px; border-top: 1px solid #a0a0a0; border-left: 1px solid #a0a0a0; border-bottom: 2px solid #5a5a5a; border-right: 2px solid #5a5a5a; margin: 8px; 
+	width: 92%; margin-left: auto; margin-right: auto; }
+.yi-term-position	{ display: block; float: left; }
+.yi-sys-result-term-set { padding-top: 1px; }
+.yi-sys-result-term-notset	{ border-top: 1px solid black; }
+.yi-sys-result-add	{ margin-left: 4px; margin-right: 4px; }
+.yi-sys-allow-scroll-horizontal	{ overflow-x: scroll; }

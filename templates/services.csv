@@ -1,0 +1,233 @@
+serviceId,serviceName,serviceStatic,currencyId,amount,categoryId,drugId,drugName,unitId,countable
+1,X-RAY ABDOMEN-KUB,X-RAY ABDOMEN-KUB,1,30000,3,,,,0
+2,X-RAY ABDOMEN-SUPINE/ERECT,X-RAY ABDOMEN-SUPINE/ERECT,1,60000,3,,,,0
+3,X-RAY ANKLE,X-RAY ANKLE,1,30000,3,,,,0
+4,X-RAY CALCANEUM,X-RAY CALCANEUM,1,30000,3,,,,0
+5,X-RAY CERVICAL SPINE,X-RAY CERVICAL SPINE,1,40000,3,,,,0
+6,X-RAY CERVICAL SPINE AP&LAT-OBLIQUES,X-RAY CERVICAL SPINE AP&LAT-OBLIQUES,1,60000,3,,,,0
+7,X-RAY CHEST AP,X-RAY CHEST AP,1,30000,3,,,,0
+8,X-RAY CHEST AP AND LATERAL,X-RAY CHEST AP AND LATERAL,1,60000,3,,,,0
+9,X-RAY CLAVICLE,X-RAY CLAVICLE,1,30000,3,,,,0
+10,X-RAY ELBOW,X-RAY ELBOW,1,30000,3,,,,0
+11,X-RAY FACIAL BONES/ORBITS,X-RAY FACIAL BONES/ORBITS,1,30000,3,,,,0
+12,X-RAY FEMUR,X-RAY FEMUR,1,40000,3,,,,0
+13,X-RAY FINGER,X-RAY FINGER,1,30000,3,,,,0
+14,X-RAY FOOT,X-RAY FOOT,1,30000,3,,,,0
+15,X-RAY FOREARM,X-RAY FOREARM,1,30000,3,,,,0
+16,X-RAY HAND,X-RAY HAND,1,30000,3,,,,0
+17,X-RAY HIP,X-RAY HIP,1,30000,3,,,,0
+18,X-RAY KNEE-AP AND LATERAL,X-RAY KNEE-AP AND LATERAL,1,30000,3,,,,0
+19,X-RAY LEG,X-RAY LEG,1,30000,3,,,,0
+20,X-RAY LUMBER SPINE AP&LAT,X-RAY LUMBER SPINE AP&LAT,1,45000,3,,,,0
+21,X-RAY LUMBER SPINE AP&LAT-OBLIQUES,X-RAY LUMBER SPINE AP&LAT-OBLIQUES,1,45000,3,,,,0
+22,X-RAY MANDIBLE,X-RAY MANDIBLE,1,30000,3,,,,0
+23,X-RAY MASTOID-BILATERAL,X-RAY MASTOID-BILATERAL,1,30000,3,,,,0
+24,X-RAY NASAL BONE,X-RAY NASAL BONE,1,30000,3,,,,0
+25,X-RAY PARANASAL SINUSES,X-RAY PARANASAL SINUSES,1,30000,3,,,,0
+26,X-RAY PELVIC,X-RAY PELVIC,1,30000,3,,,,0
+27,X-RAY RIBS,X-RAY RIBS,1,30000,3,,,,0
+28,X-RAY SCAPULA,X-RAY SCAPULA,1,30000,3,,,,0
+29,X-RAY SHOULDER,X-RAY SHOULDER,1,30000,3,,,,0
+30,X-RAY SKELETAL SURVEY UNDER 5YRS,X-RAY SKELETAL SURVEY UNDER 5YRS,1,75000,3,,,,0
+31,X-RAY ADENOIDS,X-RAY ADENOIDS,1,30000,3,,,,0
+32,X-RAY SKULL STUDIES-AP AND LATERAL,X-RAY SKULL STUDIES-AP AND LATERAL,1,45000,3,,,,0
+33,X-RAY T.M JOINTS,X-RAY T.M JOINTS,1,45000,3,,,,0
+34,X-RAY ORBITS-GAZE UP&GAZE DOWN,X-RAY ORBITS-GAZE UP&GAZE DOWN,1,60000,3,,,,0
+35,USS WHOLE ABNOMEN,USS WHOLE ABNOMEN,1,45000,4,,,,0
+36,USS BREAST,USS BREAST,1,45000,4,,,,0
+37,USS THYROIDS,USS THYROIDS,1,45000,4,,,,0
+38,USS PELVIC,USS PELVIC,1,45000,4,,,,0
+39,USS KUB,USS KUB,1,30000,4,,,,0
+40,USS NECK,USS NECK,1,45000,4,,,,0
+41,ECHO,ECHO,1,45000,4,,,,0
+42,VASCULAR DOPPLER,VASCULAR DOPPLER,1,45000,4,,,,0
+43,USS BRAIN,USS BRAIN,1,45000,4,,,,0
+44,USS SOFT TISSUE,USS SOFT TISSUE,1,45000,4,,,,0
+45,USS OPTHALMOLOGY,USS OPTHALMOLOGY,1,45000,4,,,,0
+46,ECG,ECG,1,20000,4,,,,0
+47,USS OBSTETRICS,USS OBSTETRICS,1,45000,4,,,,0
+48,BARIUM ENEMA,BARIUM ENEMA,1,160000,5,,,,0
+49,BARIUM MEAL,BARIUM MEAL,1,110000,5,,,,0
+50,BARIUM SWALLOW,BARIUM SWALLOW,1,85000,5,,,,0
+51,CYSTOGRAPHY,CYSTOGRAPHY,1,95000,5,,,,0
+52,HISTERISALPINGOGRAM,HISTERISALPINGOGRAM,1,110000,5,,,,0
+53,SINOGRAM,SINOGRAM,1,85000,5,,,,0
+54,URETHROGRAPHY-ANTEGRADE & RETROGRADE,URETHROGRAPHY-ANTEGRADE & RETROGRADE,1,110000,5,,,,0
+55,URETHROGRAPHY-RETROGRADE,URETHROGRAPHY-RETROGRADE,1,95000,5,,,,0
+56,UROGRAPHY [IVU],UROGRAPHY [IVU],1,160000,5,,,,0
+57,X-RAY FISTULOGRAM,X-RAY FISTULOGRAM,1,95000,5,,,,0
+58,SIALOGRAM,SIALOGRAM,1,95000,5,,,,0
+59,OPENING FILE,OPEN_FILE,1,25000,1,,,,0
+60,OPENING CARD,OPEN_CARD,1,5000,1,,,,0
+61,SPECIALIST CONSULTATION,SPECIALIST CONSULTATION,1,15000,2,,,,0
+62,NON SPECIALIST CONSULTATION,NON SPECIALIST CONSULTATION,1,5000,2,,,,0
+63,PROSTATE SPECIFIC ANTIGEN (PSA),PROSTATE SPECIFIC ANTIGEN,1,65000,6,,,,0
+64,CREATININE,CREATININE,1,15000,6,,,,0
+65,FULL BLOOD COUNT (FBC),FULL BLOOD COUNT,1,20000,6,,,,0
+66,STOOL,STOOL,1,5000,6,,,,0
+67,RANDOM BLOOD GLUCOSE(RBG),RANDOM BLOOD GLUCOSE,1,5000,6,,,,0
+68,URINALYSIS,URINALYSIS,1,5000,6,,,,0
+69,PREGNANCY TEST,PREGNANCY TEST,1,3000,6,,,,0
+70,HIV,HIV,1,0,6,,,,0
+71,VDRL,VDRL,1,15000,6,,,,0
+72,MRDT,MRDT,1,500,6,,,,0
+73,H.PYLORI,H.PYLORI,1,25000,6,,,,0
+74,BLOOD GROUPING,BLOOD GROUPING,1,5000,6,,,,0
+75,ERYTHROCYTE SEDIMENTATION RATE (ESR),ERYTHROCYTE SEDIMENTATION RATE,1,15000,6,,,,0
+76,Amoxicillin  Capsules   250  mg,,1,100,7,1,Amoxicillin  Capsules   250  mg,2,1
+77,Ampiclox  Capsules   500  mg,,1,250,7,2,Ampiclox  Capsules   500  mg,2,1
+78,Doxycycline,,1,100,7,3,Doxycycline,2,1
+79,Flucamox,,1,500,7,4,Flucamox,3,1
+80,Amoxiclav  625  mg  (14’s  pack),,1,20000,7,5,Amoxiclav  625  mg  (14’s  pack),4,1
+81,Amoxclav      375  mg,,1,15000,7,6,Amoxclav      375  mg,4,1
+82,Metronidazole  Tablets   300 mgs.,,1,100,7,7,Metronidazole  Tablets   300 mgs.,3,1
+83,Tinidazole  tablets   500  mg,,1,500,7,8,Tinidazole  tablets   500  mg,3,1
+84,Azithromycin  500  mg,,1,1500,7,9,Azithromycin  500  mg,3,1
+85,Phenoxymethyl  Penicillin  250  mg,,1,500,7,10,Phenoxymethyl  Penicillin  250  mg,3,1
+86,Cefixime   200  mg,,1,2000,7,11,Cefixime   200  mg,3,1
+87,Cefuroxime   500  mg,,1,2000,7,12,Cefuroxime   500  mg,3,1
+88,Erythromycin   200  mg,,1,100,7,13,Erythromycin   200  mg,3,1
+89,Clarithromycin   500  mg,,1,1000,7,14,Clarithromycin   500  mg,3,1
+90,Lomefloxacin  400  mg,,1,2000,7,15,Lomefloxacin  400  mg,3,1
+91,Nitrofurantoin  100  mg,,1,200,7,16,Nitrofurantoin  100  mg,3,1
+92,Tetracycline   250  mg,,1,500,7,17,Tetracycline   250  mg,3,1
+93,Cotrimoxazole  400  mg,,1,150,7,18,Cotrimoxazole  400  mg,3,1
+94,Relcier  (Antacid) 100  mls,,1,7000,7,19,Relcier  (Antacid) 100  mls,5,1
+95,Rabeprazole  20  mg,,1,1000,7,20,Rabeprazole  20  mg,3,1
+96,Heligo  Kit,,1,40000,7,21,Heligo  Kit,4,1
+97,Omeprazole,,1,200,7,22,Omeprazole,2,1
+98,Ciprofloxacin  500 mg,,1,500,7,23,Ciprofloxacin  500 mg,3,1
+99,Magnesium  Trisilicate,,1,100,7,24,Magnesium  Trisilicate,3,1
+100,Soral  (Tenoxicam)  20  mg,,1,1000,7,25,Soral  (Tenoxicam)  20  mg,3,1
+101,Tramadol  Capsules   50  mg,,1,500,7,26,Tramadol  Capsules   50  mg,2,1
+102,Muvera  (meloxicam )  7.5  mg,,1,1000,7,27,Muvera  (meloxicam )  7.5  mg,3,1
+103,Diclofenac  50  mg,,1,500,7,28,Diclofenac  50  mg,3,1
+104,Paracetamol  500  mg,,1,100,7,29,Paracetamol  500  mg,3,1
+105,Meloxicam  (M.cam)  7.5  mg,,1,500,7,30,Meloxicam  (M.cam)  7.5  mg,3,1
+106,Gofen   100  mg,,1,200,7,31,Gofen   100  mg,3,1
+107,Zerodol  (Aceclofenac )  100  mg,,1,500,7,32,Zerodol  (Aceclofenac )  100  mg,3,1
+108,Ibumex  (Ibuprofen)   200  mg,,1,200,7,33,Ibumex  (Ibuprofen)   200  mg,3,1
+109,Haloperidol  1.5  gm,,1,500,7,34,Haloperidol  1.5  gm,3,1
+110,Chlorpromazine  100  mg,,1,1000,7,35,Chlorpromazine  100  mg,3,1
+111,Amitriptyline   25  mg,,1,500,7,36,Amitriptyline   25  mg,3,1
+112,Praziquantel   600  mg,,1,1000,7,37,Praziquantel   600  mg,3,1
+113,Diazepam   5  mg,,1,500,7,38,Diazepam   5  mg,3,1
+114,Imipramine  25  mg,,1,500,7,39,Imipramine  25  mg,3,1
+115,Ibumex,,1,3000,7,40,Ibumex,5,1
+116,Pregabalin  75  mg,,1,1000,7,41,Pregabalin  75  mg,3,1
+117,Osteocare  ,,1,1500,7,42,Osteocare  ,3,1
+118,Lactulose  solution,,1,7000,7,43,Lactulose  solution,5,1
+119,Castor  Oil,,1,4000,7,44,Castor  Oil,5,1
+120,Enemax,,1,10000,7,45,Enemax,5,1
+121,Anusol  suppositories,,1,0,7,46,Anusol  suppositories,1,1
+122,Bisacodly   5  mg,,1,500,7,47,Bisacodly   5  mg,3,1
+123,Captopril   25  mg,,1,400,7,48,Captopril   25  mg,3,1
+124,Nifedipine  20  mg,,1,400,7,49,Nifedipine  20  mg,3,1
+125,Aprinox   5  mg,,1,300,7,50,Aprinox   5  mg,3,1
+126,Clopidogrel   75  mg,,1,500,7,51,Clopidogrel   75  mg,3,1
+127,Artovastatin  10  mg,,1,500,7,52,Artovastatin  10  mg,3,1
+128,Rosuvastatin   20  mg,,1,500,7,53,Rosuvastatin   20  mg,3,1
+129,Carvedilol   12.5  mg,,1,500,7,54,Carvedilol   12.5  mg,3,1
+130,Olmersartan  20  mg,,1,1000,7,55,Olmersartan  20  mg,3,1
+131,Sprionolactone   25  mg,,1,1000,7,56,Sprionolactone   25  mg,3,1
+132,Olmersar  H,,1,1000,7,57,Olmersar  H,3,1
+133,Losartan  H,,1,1000,7,58,Losartan  H,3,1
+134,Amlodipine   5  mg,,1,500,7,59,Amlodipine   5  mg,3,1
+135,Amlodipine  10  mg,,1,500,7,60,Amlodipine  10  mg,3,1
+136,Lisinopril   5  mg,,1,500,7,61,Lisinopril   5  mg,3,1
+137,Lisinopril   10  mg,,1,500,7,62,Lisinopril   10  mg,3,1
+138,Glibenclamide  &  Metformin,,1,1000,7,63,Glibenclamide  &  Metformin,3,1
+139,Metformin   500  mg,,1,500,7,64,Metformin   500  mg,3,1
+140,Glibenclamide   5  mg,,1,500,7,65,Glibenclamide   5  mg,3,1
+141,Chlorpropamide  (Dibonis)   250  mg,,1,500,7,66,Chlorpropamide  (Dibonis)   250  mg,3,1
+142,Gemer,,1,1000,7,67,Gemer,2,1
+143,Tronexamic  Acid  Capsules  500  mg,,1,1500,7,68,Tronexamic  Acid  Capsules  500  mg,2,1
+144,Oxbutynin   5  mg,,1,1000,7,69,Oxbutynin   5  mg,3,1
+145,Hyoscine/Butlybromide   10  mg,,1,500,7,70,Hyoscine/Butlybromide   10  mg,3,1
+146,Clomifene,,1,500,7,71,Clomifene,3,1
+147,Tadalafil   20   mg,,1,5000,7,72,Tadalafil   20   mg,3,1
+148,Casodex   50   mg,,1,11600,7,73,Casodex   50   mg,3,1
+149,Casodex   150  mg,,1,14300,7,74,Casodex   150  mg,3,1
+150,Tamsulosin  0.4  mg,,1,1000,7,75,Tamsulosin  0.4  mg,3,1
+151,Finasteride   5  mg,,1,1000,7,76,Finasteride   5  mg,3,1
+152,Promethazine   25  mg,,1,500,7,77,Promethazine   25  mg,3,1
+153,Aminophyline   100  mg,,1,500,7,78,Aminophyline   100  mg,3,1
+154,Salbutamol  tablets,,1,0,7,79,Salbutamol  tablets,3,1
+155,Metoclopramide   solution,,1,10000,7,80,Metoclopramide   solution,5,1
+156,Salbutamol  Inhaler,,1,0,7,81,Salbutamol  Inhaler,1,1
+157,Predinisolone    5  mg,,1,200,7,82,Predinisolone    5  mg,3,1
+158,Cetrizine  10  mg,,1,200,7,83,Cetrizine  10  mg,3,1
+159,Toff   Plus,,1,100,7,84,Toff   Plus,2,1
+160,Colostamine,,1,600,7,85,Colostamine,3,1
+161,Albendazole   400  mg,,1,1500,7,86,Albendazole   400  mg,3,1
+162,Haemovit  syrup   200  mls,,1,6000,7,87,Haemovit  syrup   200  mls,5,1
+163,Nat  B,,1,2000,7,88,Nat  B,2,1
+164,Haemovit  capsule,,1,2000,7,89,Haemovit  capsule,2,1
+165,Multivitamin  tablets,,1,500,7,90,Multivitamin  tablets,3,1
+166,Neuroton tbets,,1,800,7,91,Neuroton tbets,3,1
+167,Cod liver oil,,1,0,7,92,Cod liver oil,5,1
+168,Chlrophenirmine   4  mg,,1,200,7,93,Chlrophenirmine   4  mg,3,1
+169,Arthemether  &  Lumefantine,,1,0,7,94,Arthemether  &  Lumefantine,1,1
+170,Duo  -  Cotecsin,,1,15000,7,95,Duo  -  Cotecsin,4,1
+171,Clotrimazole  cream,,1,4000,7,96,Clotrimazole  cream,1,1
+172,Clotrimazole   v.  cream,,1,10000,7,97,Clotrimazole   v.  cream,1,1
+173,Artesunate  Injection,,1,15000,7,98,Artesunate  Injection,1,1
+174,Preparation  H.   supp.,,1,1500,7,99,Preparation  H.   supp.,6,1
+175,Glycerol  supp.,,1,1500,7,100,Glycerol  supp.,6,1
+176,Anusol  supp.,,1,0,7,101,Anusol  supp.,6,1
+177,Glycerol  pessaries,,1,10000,7,102,Glycerol  pessaries,4,1
+178,Neuro  support,,1,1000,7,103,Neuro  support,3,1
+179,Vitamin  B  Complex,,1,300,7,104,Vitamin  B  Complex,3,1
+180,Cefriaxone  Injection  1  gm,,1,5000,7,105,Cefriaxone  Injection  1  gm,7,1
+181,Cefriaxone  Injection   750  mg,,1,15000,7,106,Cefriaxone  Injection   750  mg,7,1
+182,Cefotaxime  Injection   1  gm,,1,7000,7,107,Cefotaxime  Injection   1  gm,7,1
+183,Amikacin  Injection   500  mg,,1,15000,7,108,Amikacin  Injection   500  mg,8,1
+184,Lasix  Injection   10  mg.,,1,1000,7,109,Lasix  Injection   10  mg.,8,1
+185,Gentamycin  Injection  2  ml.    80  mg,,1,2500,7,110,Gentamycin  Injection  2  ml.    80  mg,8,1
+186,Tramadol   Injection,,1,5000,7,111,Tramadol   Injection,8,1
+187,Tranexamic   Injection  Acid    100  mg,,1,10000,7,112,Tranexamic   Injection  Acid    100  mg,8,1
+188,Hydrocortisone  Injection   100  mg,,1,2500,7,113,Hydrocortisone  Injection   100  mg,8,1
+189,Diclofenac  Injection    75  mg,,1,5000,7,114,Diclofenac  Injection    75  mg,8,1
+190,Dressing,DRESSING,1,2000,8,,,,0
+191,Cathetarization,CATHETARIZATION,1,30000,8,,,,0
+192,Cathetarization with Buggies and Introducer,CATHETARIZATION BUGGIES INTRODUCER,1,50000,8,,,,0
+193,SPC (SupraPubic Catheter) Change,SPC CHANGE,1,30000,8,,,,0
+194,SPC (SupraPubic Catheter) NEW,SPC NEW,1,300000,8,,,,0
+195,Hypospadiasis Repair,HYPOSPADIASIS REPAIR,1,800000,9,,,,0
+196,Urethroplasty,URETHROPLASTY,1,800000,9,,,,0
+197,Cystectomy+urinary Diversion,CYSTECTOMY+URINARY DIVERSION,1,1200000,9,,,,0
+198,Retropubic Prostatectomy,RETROPUBIC PROSTATECTOMY,1,800000,9,,,,0
+199,Radical Prostatectomy,RADICAL PROSTATECTOMY,1,1000000,9,,,,0
+200,Transvesical Prostatectomy,TRANSVESICAL PROSTATECTOMY,1,700000,9,,,,0
+201,Pyelolithotomy,PYELOLITHOTOMY,1,800000,9,,,,0
+202,Pyeloplasty,PYELOPLASTY,1,900000,9,,,,0
+203,Nephrolithotomy,NEPHROLITHOTOMY,1,800000,9,,,,0
+204,Nephrectomy,NEPHRECTOMY,1,800000,9,,,,0
+205,Ureterolithotomy,URETEROLITHOTOMY,1,700000,9,,,,0
+206,Penile Amputation,PENILE AMPUTATION,1,900000,9,,,,0
+207,Scrotoplasty,SCROTOPLASTY,1,900000,9,,,,0
+208,Hydrocelectomy,HYDROCELECTOMY,1,500000,9,,,,0
+209,Herniotomy,HERNIOTOMY,1,500000,9,,,,0
+210,Open Cystolithotomy,OPEN CYSTOLITHOTOMY,1,500000,9,,,,0
+211,Orchidopexy,ORCHIDOPEXY,1,500000,9,,,,0
+212,Circumcision,CIRCUMCISION,1,150000,9,,,,0
+213,Penile Biopsy,PENILE BIOPSY,1,300000,9,,,,0
+214,Testicular Biopsy,TESTICULAR BIOPSY,1,500000,9,,,,0
+215,Orchidectomy,ORCHIDECTOMY,1,300000,9,,,,0
+216,Vasectomy,VASECTOMY,1,300000,9,,,,0
+217,Lymph Node Biopsy,LYMPH NODE BIOPSY,1,150000,9,,,,0
+218,Open Suprapubic Catheterisation,OPEN SUPRAPUBIC CATHETERISATION,1,300000,9,,,,0
+219,Percutaneous Suprapubic Catheterisation,PERCUTANEOUS SUPRAPUBIC CATHETERISATION,1,300000,9,,,,0
+220,Total Abdominal Hysterectomy,TOTAL ABDOMINAL HYSTERECTOMY,1,700000,9,,,,0
+221,Thyroidectomy,THYROIDECTOMY,1,700000,9,,,,0
+222,Herniorhaphy,HERNIORHAPHY,1,500000,9,,,,0
+223,Colectomy,COLECTOMY,1,800000,9,,,,0
+224,Transurethral Resection Of The Prostate,TRANSURETHRAL RESECTION OF THE PROSTATE,1,900000,10,,,,0
+225,Transurethral Resection Of Bladder Tumor,TRANSURETHRAL RESECTION OF BLADDER TUMOR,1,900000,10,,,,0
+226,Transurethral Bladder Neck Incision,TRANSURETHRAL  BLADDER NECK INCISION,1,500000,10,,,,0
+227,Transurethral Cystocele Incision,TRANSURETHRAL  CYSTOCELE INCISION,1,500000,10,,,,0
+228,Retrograde Ureteric Catherelisation,RETROGRADE URETERIC CATHERELISATION,1,600000,10,,,,0
+229,Transurethral Bladder Biopsy,TRANSURETHRAL  BLADDER BIOPSY,1,500000,10,,,,0
+230,Transurethral Bladder Stone Removal,TRANSURETHRAL  BLADDER STONE REMOVAL,1,600000,10,,,,0
+231,Urethrocystoscopy +eua,URETHROCYSTOSCOPY +EUA,1,500000,10,,,,0
+232,Direct Vision Urethrotomy (dvu),DIRECT VISION URETHROTOMY (DVU),1,600000,10,,,,0

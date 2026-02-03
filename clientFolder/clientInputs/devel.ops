@@ -1,0 +1,1 @@
+INSERT INTO _contextPosition (cName, cPosition, caption) VALUES ('nursestation', 115, 'Nurse Station Management'),('nursestation_record', 116, 'Record patient data');

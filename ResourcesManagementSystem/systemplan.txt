@@ -1,0 +1,95 @@
+ResoucesManagementSystem
+
+class: ResourceType
+            typeId
+            typeName { eg Bus, Car }
+
+class: Resource 
+            resourceId
+            resourceName { eg TATA T487DNZ }
+            typeId : ref ResouceType 
+            photo
+            available (1)
+            operatorAlias ( eg: Driver )
+
+class: Operator //These are persons who operate a resouce by their name 
+            operatorId
+            operatorName {  eg Enock }
+            operatorTitle { Operator, however operatorAlias will override this }
+
+class: ExpenseType 
+            typeId { default }
+            typeName
+
+class: Expense
+            expenseId { general, fuel, clutch-plate etc }
+            expenseName 
+            typeId: ref ExpenseType
+
+class: IncomeType
+            typeId
+            typeName {Service, Product }
+
+class: Income
+            incomeId
+            incomeName { general, transport service, handle }
+            typeId : ref IncomeType { ie transport is a service }
+
+//Link Tables These tables make sure always the correct mappings while populating fields
+class: ResourceOperatorLink 
+            linkId
+            linkName
+            resourceId 
+            operatorId
+
+class: ResourceExpenseLink
+            linkId 
+            linkName 
+            resourceId
+            expenseId 
+
+class: ResourceIncomeLink
+            linkId
+            linkName
+            resourceId
+            incomeId 
+
+//Actual Business Tables 
+class: ExpenseList
+            listId
+            timeOfCreation
+            timeOfUpdation
+            expenseId 
+            amount
+
+class: IncomeList
+            listId
+            timeOfCreation
+            timeOfUpdation
+            incomeId 
+            amount
+
+class: IncomeOrExpenseList
+            listId
+            timeOfCreation
+            timeOfUpdation
+            refObject 
+            amount 
+            tag { INCOME, EXPENSE }
+            offeringCleared (0)
+
+//Tithe and Offering 
+class: OfferingGroup
+        groupId
+        groupName { Default }
+
+class: Offering
+        offeringId 
+        offeringName { Tithe }
+        ratio {5}
+
+//Now with data 
+class: OfferingList
+        listId
+        offeringId : ref Offering 
+        amount 

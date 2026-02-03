@@ -1,0 +1,28 @@
+SELECT questionName FROM securityQuestion 
+    INTO OUTFILE 'securityQuestion.csv'
+    FIELDS TERMINATED BY ','
+    OPTIONALLY ENCLOSED BY '"'
+    ESCAPED BY ''
+    LINES TERMINATED BY '\n';
+
+
+SELECT questionId,questionName FROM securityQuestion 
+    INTO OUTFILE '/var/lib/mysql-files/securityQuestion.csv'
+    FIELDS TERMINATED BY ','
+    OPTIONALLY ENCLOSED BY '"'
+    ESCAPED BY ''
+    LINES TERMINATED BY '\n';
+
+SELECT countryId,countryName, abbreviation, code, timezone FROM country 
+    INTO OUTFILE '/var/lib/mysql-files/country.csv'
+    FIELDS TERMINATED BY ','
+    OPTIONALLY ENCLOSED BY '"'
+    ESCAPED BY ''
+    LINES TERMINATED BY '\n';
+
+SELECT symbol, value FROM contextLookup
+    INTO OUTFILE '/var/lib/mysql-files/contextLookup'
+    FIELDS TERMINATED BY ','
+    OPTIONALLY ENCLOSED BY '"'
+    ESCAPED BY ''
+    LINES TERMINATED BY '\n';

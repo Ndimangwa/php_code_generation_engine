@@ -1,0 +1,83 @@
+function finance  {
+  Check for Waiver Approval;
+  Raise Invoice;
+  Wait for Payment
+}
+function doRegistration() {
+  if (fullRegistration) {
+    Record all Patient File;
+    call finance(value: 25,000);
+  } else {
+    Record Patient Card;
+    call finance(value: 5000);
+  }
+}
+function laboratory() {
+  call finance(value: totalLabValue);
+  perform lab test;
+  update lab results;
+}
+function pharmacy() {
+  call finance(value: value);
+  if (medicine Available) {
+    issue Medicine;
+  } else {
+    referrer;
+  }
+}
+function operation()  {
+  admit Patient;
+  call finance(admission + operation);
+  operate patient;
+}
+function consultation() {
+  check instruction, what to be done
+  if (Further Checkup required) {
+    call laboratory();
+    check Results;
+    call consultation(instruction);
+  } 
+  if (Medicine Required) {
+    call pharmacy();
+    call consultation(Appointment or Close or General);
+  } 
+  if (Operation Required)  {
+    call operation();
+    call consultation();
+  } 
+  if (Appointment)  {
+    Schedule Appointment;
+    call consultation();
+  }
+  if (Transfer OUT Required) {
+    Transfer to Referreral Hospital;
+    receive results;
+    call consultation();
+  }
+  if (need close) {
+    close case;
+    return;
+  }
+}
+function triage() {
+  record pressure;
+  record temperature;
+  record height;
+  record weight;
+}
+Start; //Patient Arriving at Mbwambo Super Specialized Hospital [Case Based]
+if (! registered) {
+  call doRegistration();
+} else {
+  call finance(value: consultationFee);
+}
+call triage();
+if (Transfer IN case) {
+  call laboratory();
+  send Results Back;
+  return;
+}
+call consultation();
+
+
+

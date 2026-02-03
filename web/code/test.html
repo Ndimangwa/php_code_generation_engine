@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Test</title>
+    <script src="../cdns/default/js/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="../cdns/default/js/popper.min.js" crossorigin="anonymous"></script>
+    <script src="../cdns/default/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/page.js"></script>
+    <script type="text/javascript">
+    (function($)    {
+        $(function()    {
+            $('#button1').on('click', function(e)    {
+                //window.alert(ListObject.textDelete);
+                populateCascadeSelect("A", "B", "C", "D", "E", "F", "G");
+            });
+        });
+    })(jQuery);
+    </script>
+</head>
+<body>
+    <input id="button1" type="button" style="cursor: pointer;" value="Click Me"/>
+</body>
+</html>
